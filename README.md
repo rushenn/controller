@@ -1,1 +1,26 @@
-## minioctrl
+## Controller console
+
+## Install
+
+```
+$ git clone https://github.com/minio/controller
+$ npm install
+$ npm install -g gulp
+$ gulp build
+$ gulp start
+
+```
+
+Open your browser at http://localhost:8000
+
+### Testing with golang http server
+
+```
+$ go get github.com/jteeuwen/go-bindata/...
+$ go get github.com/elazarl/go-bindata-assetfs/...
+
+$ go generate ./...
+$ go run assets.go main.go
+```
+
+Open your browser at http://localhost:8080

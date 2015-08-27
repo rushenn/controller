@@ -131,7 +131,7 @@ gulp.task('bundle', function () {
 gulp.task('webserver', function() {
   webserver = gulp.src(['.tmp', 'app'])
     .pipe($.webserver({
-      host: '0.0.0.0', //change to 'localhost' to disable outside connections
+      host: 'localhost',
       livereload: {
         enable: true,
         filter: function(filePath) {
@@ -147,7 +147,7 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('serve', function() {
+gulp.task('start', function() {
   runSequence('clean:dev', ['scripts']);
   gulp.watch('app/*.html');
   gulp.watch('app/scripts/**/*.js', ['scripts']);

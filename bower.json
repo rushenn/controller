@@ -1,13 +1,13 @@
 {
-  "name": "minioctrl",
-  "version": "0.0.0",
+  "name": "controller",
+  "version": "0.1.0",
   "authors": [
-    "Krishna Srinivas"
+    "Minio, Inc."
   ],
   "moduleType": [
     "node"
   ],
-  "license": "APACHE",
+  "license": "Apache-2.0",
   "ignore": [
     "**/.*",
     "node_modules",
