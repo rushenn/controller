@@ -1,0 +1,20 @@
+{
+  "name": "minioctrl",
+  "version": "0.0.0",
+  "authors": [
+    "Krishna Srinivas"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "APACHE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
