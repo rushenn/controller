@@ -38,7 +38,7 @@ gulp.task('scripts', function() {
     .pipe(streamify(uglify('app.min.js')))
     .pipe(gulp.dest('dist'))
 
-  gulp.src('app/scripts/extern/*.js')
+  gulp.src(['app/scripts/extern/jquery.js', 'app/scripts/extern/bootstrap.js'])
     .pipe(concat('extern.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
