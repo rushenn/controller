@@ -25,6 +25,13 @@ var rename = require('gulp-rename');
 var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 
+var paths = {
+  reactScripts : ['app/scripts/minio/*', 'app/scripts/minio/**/*'],
+  otherScripts : ['app/scripts/extern/*'],
+  fonts : 'app/fonts/**/*',
+  less : ['app/styles/*.less', 'app/styles/**/*.less']
+}
+
 gulp.task('clean', function() {
   return del(['dist']);
 });
@@ -38,7 +45,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*', {base:"app"})
+  return gulp.src(paths.fonts, {base:"app"})
     .pipe(gulp.dest('dist'))
 })
 
@@ -47,7 +54,7 @@ gulp.task('html', function() {
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('scripts-react', function() {
+gulp.task('react-scripts', function() {
   return browserify({entries: './app/scripts/minio/app.js', extensions: ['.jsx']}).transform('reactify')
     .bundle()
     .pipe(source('app.min.js'))
@@ -55,14 +62,22 @@ gulp.task('scripts-react', function() {
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('scripts-others', function() {
+gulp.task('other-scripts', function() {
   return gulp.src(['app/scripts/extern/jquery.js', 'app/scripts/extern/bootstrap.js'])
     .pipe(concat('extern.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('scripts', ['scripts-react', 'scripts-others'])
+gulp.task('watch', ['build'], function() {
+  gulp.watch(paths.reactScripts, ['react-scripts'])
+  gulp.watch(paths.otherScripts, ['other-scripts'])
+  gulp.watch('app/index.html', ['html'])
+  gulp.watch(paths.fonts, ['fonts'])
+  gulp.watch(paths.less, ['less'])
+})
+
+gulp.task('scripts', ['react-scripts', 'other-scripts'])
 
 gulp.task('build', ['less', 'fonts', 'html', 'scripts'])
 
