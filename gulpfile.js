@@ -24,6 +24,7 @@ var streamify = require('gulp-streamify');
 var rename = require('gulp-rename');
 var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
+var server = require('gulp-webserver');
 
 var paths = {
   reactScripts : ['app/scripts/minio/*', 'app/scripts/minio/**/*'],
@@ -75,6 +76,18 @@ gulp.task('watch', ['build'], function() {
   gulp.watch('app/index.html', ['html'])
   gulp.watch(paths.fonts, ['fonts'])
   gulp.watch(paths.less, ['less'])
+})
+
+gulp.task('serve', ['watch'], function() {
+  gulp.src('dist')
+    .pipe(server({
+      livereload: true,
+      open: true,
+      proxies: [{
+        source: '/rpc',
+        target: 'http://localhost:9001/rpc'
+      }]
+    }))
 })
 
 gulp.task('scripts', ['react-scripts', 'other-scripts'])
