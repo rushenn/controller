@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-'use strict';
-
 var React = require('react');
 var Router = require('react-router');
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 
-var Layout = require('./components/layout');
-var Home = require('./components/home');
+var Layout = require('../components/layout');
+var Home = require('../components/home');
 
 var routes = (
   <Route name='layout' path='/' handler={Layout}>

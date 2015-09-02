@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-var Router = require('./router');
+var Routes = require('./config/routes');
 
-Router.start();
+Routes.start();

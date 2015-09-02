@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-'use strict';
-
 var React = require('react');
 var Credentials = require('./credentials');
 
 var Home = React.createClass({
+  getInitialState: function () {
+    return {
+      accessKeyId: 'BKIKJAA5BMMU2RHO6IBB',
+      secretAccessKey: 'V7f1C\wQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr1'
+    };
+  },
   clickHandler: function () {
     React.unmountComponentAtNode(document.getElementById('content'));
-    React.render(<Credentials />, document.getElementById('content'));
+    React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey}/>,
+      document.getElementById('content')
+    );
   },
   render: function() {
     return (

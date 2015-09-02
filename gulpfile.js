@@ -28,7 +28,7 @@ var server = require('gulp-webserver');
 var eslint = require('gulp-eslint');
 
 var paths = {
-  reactScripts: ['app/*.js', 'app/*.jsx', 'app/components/*.jsx', 'app/actions/*.js', 'app/stores/*.js', 'app/lib/*.js'],
+  reactScripts: ['app/*.js', 'app/*.jsx', 'app/components/*.jsx', 'app/actions/*.js', 'app/stores/*.js'],
   otherScripts : ['app/vendor/*.js'],
   fonts : 'app/fonts/**/*',
   less : ['app/styles/*.less', 'app/styles/**/*.less']
@@ -65,7 +65,7 @@ gulp.task('react-scripts', function() {
 })
 
 gulp.task('other-scripts', function() {
-  return gulp.src(['app/vendor/jquery.js', 'app/vendor/bootstrap.js', 'app/vendor/jsonrpc.js'])
+  return gulp.src(['app/vendor/jquery.js', 'app/vendor/bootstrap.js', 'app/lib/jsonrpc.js'])
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
