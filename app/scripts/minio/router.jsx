@@ -34,4 +34,4 @@ exports.start = function() {
   Router.run(routes, function (Handler) {
     React.render(<Handler />, document.getElementById('content'));
   });
-}
+};
