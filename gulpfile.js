@@ -25,6 +25,7 @@ var rename = require('gulp-rename');
 var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var server = require('gulp-webserver');
+var eslint = require('gulp-eslint');
 
 var paths = {
   reactScripts : ['app/scripts/minio/*', 'app/scripts/minio/**/*'],
@@ -64,7 +65,7 @@ gulp.task('react-scripts', function() {
 })
 
 gulp.task('other-scripts', function() {
-  return gulp.src(['app/scripts/extern/jquery.js', 'app/scripts/extern/bootstrap.js'])
+  return gulp.src(['app/scripts/extern/*.js'])
     .pipe(concat('extern.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
@@ -90,8 +91,21 @@ gulp.task('serve', ['watch'], function() {
     }))
 })
 
+gulp.task('lint', function () {
+  return gulp.src(paths.reactScripts)
+  // eslint() attaches the lint output to the eslint property
+  // of the file object so it can be used by other modules.
+    .pipe(eslint())
+  // eslint.format() outputs the lint results to the console.
+  // Alternatively use eslint.formatEach() (see Docs).
+    .pipe(eslint.format())
+  // To have the process exit with an error code (1) on
+  // lint error, return the stream and pipe to failOnError last.
+    .pipe(eslint.failOnError());
+});
+
 gulp.task('scripts', ['react-scripts', 'other-scripts'])
 
-gulp.task('build', ['less', 'fonts', 'html', 'scripts'])
+gulp.task('build', ['less', 'fonts', 'html', 'scripts', 'lint'])
 
 gulp.task('default', ['build'])
