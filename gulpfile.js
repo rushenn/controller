@@ -65,7 +65,11 @@ gulp.task('react-scripts', function() {
 })
 
 gulp.task('other-scripts', function() {
-  return gulp.src(['app/scripts/extern/*.js'])
+  return gulp.src([
+    'app/scripts/extern/jquery.js',
+    'app/scripts/extern/bootstrap.js',
+    'app/scripts/extern/jsonrpc.js',
+  ])
     .pipe(concat('extern.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
