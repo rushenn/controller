@@ -26,10 +26,11 @@ var Home = React.createClass({
     };
   },
   clickHandler: function () {
-    React.unmountComponentAtNode(document.getElementById('content'));
+    React.unmountComponentAtNode(document.getElementById('card-container'));
+    React.unmountComponentAtNode(document.getElementById('header'));
     React.render(<CommandBox />, document.getElementById('header'));
     React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey} />,
-                 document.getElementById('content'));
+                 document.getElementById('card-container'));
   },
   render: function() {
     return (

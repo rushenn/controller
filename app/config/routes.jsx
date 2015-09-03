@@ -30,6 +30,6 @@ var routes = (
 
 exports.start = function() {
   Router.run(routes, function (Handler) {
-    React.render(<Handler />, document.getElementById('content'));
+    React.render(<Handler />, document.getElementById('card-container'));
   });
 };
