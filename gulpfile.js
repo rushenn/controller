@@ -28,8 +28,8 @@ var server = require('gulp-webserver');
 var eslint = require('gulp-eslint');
 
 var paths = {
-  reactScripts : ['app/scripts/minio/*', 'app/scripts/minio/**/*'],
-  otherScripts : ['app/scripts/extern/*'],
+  reactScripts: ['app/*.js', 'app/*.jsx', 'app/components/*.jsx', 'app/actions/*.js', 'app/stores/*.js', 'app/lib/*.js'],
+  otherScripts : ['app/vendor/*.js'],
   fonts : 'app/fonts/**/*',
   less : ['app/styles/*.less', 'app/styles/**/*.less']
 }
@@ -57,7 +57,7 @@ gulp.task('html', function() {
 })
 
 gulp.task('react-scripts', function() {
-  return browserify({entries: './app/scripts/minio/app.js', extensions: ['.jsx']}).transform('reactify')
+  return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform('reactify')
     .bundle()
     .pipe(source('app.min.js'))
     .pipe(streamify(uglify()))
@@ -65,12 +65,8 @@ gulp.task('react-scripts', function() {
 })
 
 gulp.task('other-scripts', function() {
-  return gulp.src([
-    'app/scripts/extern/jquery.js',
-    'app/scripts/extern/bootstrap.js',
-    'app/scripts/extern/jsonrpc.js',
-  ])
-    .pipe(concat('extern.min.js'))
+  return gulp.src(['app/vendor/jquery.js', 'app/vendor/bootstrap.js', 'app/vendor/jsonrpc.js'])
+    .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
 })
