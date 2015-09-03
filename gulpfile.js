@@ -27,6 +27,7 @@ var concat = require('gulp-concat');
 var server = require('gulp-webserver');
 var eslint = require('gulp-eslint');
 var mainBowerFiles = require('main-bower-files');
+var imagemin = require('gulp-imagemin');
 
 var paths = {
   app: ['app/*.js',
@@ -36,6 +37,7 @@ var paths = {
         'app/stores/*.js'],
   vendor: mainBowerFiles({ filter: new RegExp('.*js$', 'i') }),
   fonts : 'app/fonts/**/*',
+  images : 'app/img/**/*',
   less : ['app/styles/*.less', 'app/styles/**/*.less']
 }
 
@@ -53,6 +55,12 @@ gulp.task('less', function () {
 
 gulp.task('fonts', function() {
   return gulp.src(paths.fonts, {base:"app"})
+    .pipe(gulp.dest('dist'))
+})
+
+gulp.task('images', function() {
+  return gulp.src(paths.images, {base:"app"})
+    .pipe(imagemin())
     .pipe(gulp.dest('dist'))
 })
 
@@ -81,6 +89,7 @@ gulp.task('watch', ['build'], function() {
   gulp.watch(paths.vendor, ['vendor'])
   gulp.watch('app/index.html', ['html'])
   gulp.watch(paths.fonts, ['fonts'])
+  gulp.watch(paths.images, ['images'])
   gulp.watch(paths.less, ['less'])
 })
 
@@ -111,6 +120,6 @@ gulp.task('lint', function () {
 
 gulp.task('scripts', ['app', 'vendor'])
 
-gulp.task('build', ['less', 'fonts', 'html', 'scripts', 'lint'])
+gulp.task('build', ['less', 'fonts', 'images', 'html', 'scripts', 'lint'])
 
 gulp.task('default', ['build'])
