@@ -14,11 +14,6 @@
       2,
       "unix"
     ],
-    "semi": [
-      2,
-      "always"
-    ],
-
     // React
     "react/display-name": 0,
     "react/jsx-boolean-value": 1,

@@ -16,6 +16,7 @@
 
 var React = require('react');
 var Credentials = require('./credentials');
+var CommandBox = require('./commandbox');
 
 var Home = React.createClass({
   getInitialState: function () {
@@ -26,9 +27,9 @@ var Home = React.createClass({
   },
   clickHandler: function () {
     React.unmountComponentAtNode(document.getElementById('content'));
-    React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey}/>,
-      document.getElementById('content')
-    );
+    React.render(<CommandBox />, document.getElementById('header'));
+    React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey} />,
+                 document.getElementById('content'));
   },
   render: function() {
     return (

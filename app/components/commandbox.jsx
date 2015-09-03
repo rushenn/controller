@@ -16,14 +16,22 @@
 
 var React = require('react');
 
-var CommandBar = React.createClass({
+var CommandBox = React.createClass({
+  getInitialState: function() {
+    return { commandString: '' };
+  },
+  handleChange: function(e){
+    this.setState({ commandString: e.target.value });
+  },
   render: function() {
     return (
       <header id='header' className='search-toggled'>
         <div id='top-search-wrap'>
-          <input type='text' />
+          <input type='text' value={this.state.commandString} onChange={this.handleChange} placeHolder='Command Box' />
         </div>
       </header>
     );
   }
 });
+
+module.exports = CommandBox;
