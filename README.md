@@ -6,8 +6,7 @@
 $ git clone https://github.com/minio/controller
 $ npm install
 $ npm install -g gulp
-$ gulp build
-$ gulp start
+$ gulp serve
 
 ```
 
