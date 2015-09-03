@@ -6,3 +6,5 @@ test/temp
 test/scripts/
 assets.go
 *~
+ncp-debug.log
+npm-debug.log

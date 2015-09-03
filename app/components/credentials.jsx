@@ -14,19 +14,34 @@
  * limitations under the License.
  */
 
-'use strict';
-
 var React = require('react');
 
 var Credentials = React.createClass({
+  propTypes: {
+    accessKeyId: React.PropTypes.string.isRequired,
+    secretAccessKey: React.PropTypes.string.isRequired
+  },
   render: function() {
     return (
-      <div className='login-content'>
-        <div className='lc-block toggled' id='l-login'>
-          AccessKeyID: AKIAISIAUKNTVJ347BZA <br/>
-          SecretAccessKey: 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
-        </div>
-      </div>
+      <section id='main'>
+        <section id='content'>
+          <div id='container'>
+            <div className='card'>
+              <div className='card-header'>
+                <h2> AccessKeys </h2>
+              </div>
+              <div className='card-body card-padding'>
+                <blockquote className='m-b-25'>
+                  AccessKeyID: {this.props.accessKeyId}
+                </blockquote>
+                <blockquote className='m-b-25'>
+                  SecretAccessKey: {this.props.secretAccessKey}
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
     );
   }
 });
