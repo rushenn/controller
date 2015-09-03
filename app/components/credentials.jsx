@@ -23,25 +23,19 @@ var Credentials = React.createClass({
   },
   render: function() {
     return (
-      <section id='main'>
-        <section id='content'>
-          <div id='container'>
-            <div className='card'>
-              <div className='card-header'>
-                <h2> AccessKeys </h2>
-              </div>
-              <div className='card-body card-padding'>
-                <blockquote className='m-b-25'>
-                  AccessKeyID: {this.props.accessKeyId}
-                </blockquote>
-                <blockquote className='m-b-25'>
-                  SecretAccessKey: {this.props.secretAccessKey}
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
+      <div className='card'>
+        <div className='card-header'>
+          <h2> AccessKeys </h2>
+        </div>
+        <div className='card-body card-padding'>
+          <blockquote className='m-b-25'>
+            AccessKeyID: {this.props.accessKeyId}
+          </blockquote>
+          <blockquote className='m-b-25'>
+            SecretAccessKey: {this.props.secretAccessKey}
+          </blockquote>
+        </div>
+      </div>
     );
   }
 });
