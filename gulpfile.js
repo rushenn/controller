@@ -26,10 +26,15 @@ var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var server = require('gulp-webserver');
 var eslint = require('gulp-eslint');
+var mainBowerFiles = require('main-bower-files');
 
 var paths = {
-  reactScripts: ['app/*.js', 'app/*.jsx', 'app/components/*.jsx', 'app/actions/*.js', 'app/stores/*.js'],
-  otherScripts : ['app/vendor/*.js'],
+  app: ['app/*.js',
+        'app/*.jsx',
+        'app/components/*.jsx',
+        'app/actions/*.js',
+        'app/stores/*.js'],
+  vendor: mainBowerFiles({ filter: new RegExp('.*js$', 'i') }),
   fonts : 'app/fonts/**/*',
   less : ['app/styles/*.less', 'app/styles/**/*.less']
 }
@@ -56,7 +61,7 @@ gulp.task('html', function() {
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('react-scripts', function() {
+gulp.task('app', function() {
   return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform('reactify')
     .bundle()
     .pipe(source('app.min.js'))
@@ -64,16 +69,16 @@ gulp.task('react-scripts', function() {
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('other-scripts', function() {
-  return gulp.src(['app/vendor/jquery.js', 'app/vendor/bootstrap.js', 'app/lib/jsonrpc.js'])
+gulp.task('vendor', function() {
+  return gulp.src(paths.vendor)
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
 })
 
 gulp.task('watch', ['build'], function() {
-  gulp.watch(paths.reactScripts, ['react-scripts'])
-  gulp.watch(paths.otherScripts, ['other-scripts'])
+  gulp.watch(paths.app, ['app'])
+  gulp.watch(paths.vendor, ['vendor'])
   gulp.watch('app/index.html', ['html'])
   gulp.watch(paths.fonts, ['fonts'])
   gulp.watch(paths.less, ['less'])
@@ -92,7 +97,7 @@ gulp.task('serve', ['watch'], function() {
 })
 
 gulp.task('lint', function () {
-  return gulp.src(paths.reactScripts)
+  return gulp.src(paths.app)
   // eslint() attaches the lint output to the eslint property
   // of the file object so it can be used by other modules.
     .pipe(eslint())
@@ -104,7 +109,7 @@ gulp.task('lint', function () {
     .pipe(eslint.failOnError());
 });
 
-gulp.task('scripts', ['react-scripts', 'other-scripts'])
+gulp.task('scripts', ['app', 'vendor'])
 
 gulp.task('build', ['less', 'fonts', 'html', 'scripts', 'lint'])
 
