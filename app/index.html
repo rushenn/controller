@@ -10,15 +10,23 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+    <!-- load font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="app.min.css">
     <!-- endbuild -->
 </head>
   <body>
+    <!-- command search box -->
     <header id="header" class="search-toggled"></header>
+    <!-- add a dummy card for bottom padding -->
+    <div id="dummy-card" class="card"></div>
+    <!-- login element -->
+    <div id="login-content"></div>
     <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!-- card container -->
     <section id="main">
       <section id="content">
         <div id="card-container" class="container">
@@ -28,38 +36,6 @@
     <!-- build:js(.tmp) scripts/app.js -->
     <script src="vendor.min.js"></script>
     <script src="app.min.js"></script>
-    <script>
-      $(document).ready(function(){
-      //Welcome Message (not for login page)
-      function notify(message, type){
-      $.notify({
-      message: message
-      },{
-      type: type,
-      allow_dismiss: false,
-      label: 'Cancel',
-      className: 'btn-xs btn-inverse',
-      placement: {
-      from: 'top',
-      align: 'right'
-      },
-      delay: 2500,
-      animate: {
-      enter: 'animated bounceIn',
-      exit: 'animated bounceOut'
-      },
-      offset: {
-      x: 20,
-      y: 85
-      }
-      });
-      };
-
-      if (!$('.login-content')[0]) {
-      notify('Welcome to Minio Controller.', 'inverse');
-      }
-      });
-    </script>
     <!-- endbuild -->
   </body>
 </html>
