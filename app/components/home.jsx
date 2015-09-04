@@ -26,28 +26,46 @@ var Home = React.createClass({
     };
   },
   clickHandler: function () {
-    React.unmountComponentAtNode(document.getElementById('card-container'));
-    React.unmountComponentAtNode(document.getElementById('header'));
+    React.unmountComponentAtNode(document.getElementById('login-content'));
     React.render(<CommandBox />, document.getElementById('header'));
     React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey} />,
                  document.getElementById('card-container'));
   },
   render: function() {
     return (
-      <div className='login-content'>
-        <div className='lc-block toggled' id='l-login'>
-          <div className='input-group m-b-20'>
-            <span className='input-group-addon'>
-              <i className='glyphicon glyphicon-lock'></i>
-            </span>
-            <div className='fg-line'>
-              <input type='password' className='form-control' placeholder='Password'/>
-            </div>
-          </div>
-          <div className='btn btn-danger pull-right' onClick={this.clickHandler}>
-            Login
+      <div className='lc-block toggled' id='l-login'>
+        <div className='input-group m-b-20'>
+          <span className='input-group-addon'><i className='fa fa-user'></i></span>
+          <div className='fg-line'>
+            <input type='text' className='form-control' placeholder='Username' />
           </div>
         </div>
+
+        <div className='input-group m-b-20'>
+          <span className='input-group-addon'><i className='fa fa-male'></i></span>
+          <div className='fg-line'>
+            <input type='password' className='form-control' placeholder='Password' />
+          </div>
+        </div>
+
+        <div className='clearfix'></div>
+
+        <div className='checkbox'>
+          <label>
+            <input type='checkbox' value='' />
+            <i className='input-helper'></i>
+            Keep me signed in
+          </label>
+        </div>
+
+        <a href='#' className='btn btn-login btn-danger btn-float' onClick={this.clickHandler}>
+          <i className='fa fa-angle-right'></i>
+        </a>
+
+        <ul className='login-navigation'>
+          <li data-block='#l-register' className='bgm-red'>Register</li>
+          <li data-block='#l-forget-password' className='bgm-orange'>Forgot Password?</li>
+        </ul>
       </div>
     );
   }
