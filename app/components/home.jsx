@@ -18,6 +18,7 @@ var React = require('react');
 var Credentials = require('./credentials');
 var Header = require('./header');
 var Add = require('../webshellapp/add/add-component');
+var Cards = require('./cards');
 
 var Home = React.createClass({
   getInitialState: function () {
@@ -29,9 +30,10 @@ var Home = React.createClass({
   clickHandler: function () {
     React.unmountComponentAtNode(document.getElementById('login-content'));
     React.render(<Header />, document.getElementById('header'));
-    React.render(<Add />, document.getElementById('add-container'));
+    React.render(<Add />, document.getElementById('add'));
     React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey} />,
-                 document.getElementById('card-container'));
+                 document.getElementById('credentials'));
+    React.render(<Cards />, document.getElementById('custom-cards'));
   },
   render: function() {
     return (
