@@ -15,21 +15,18 @@
  */
 
 var React = require('react');
+var CommandBox = require('./commandbox');
+var Notification = require('./notification');
 
-var CommandBox = React.createClass({
-  getInitialState: function() {
-    return { commandString: '' };
-  },
-  handleChange: function(e){
-    this.setState({ commandString: e.target.value });
-  },
+var Header = React.createClass({
   render: function() {
     return (
-      <div id='top-search-wrap'>
-        <input type='text' value={this.state.commandString} onChange={this.handleChange} />
+      <div>
+      <CommandBox />
+      <Notification />
       </div>
-    );
+    )
   }
 });
 
-module.exports = CommandBox;
+module.exports = Header

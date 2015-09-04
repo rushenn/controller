@@ -16,7 +16,7 @@
 
 var React = require('react');
 var Credentials = require('./credentials');
-var CommandBox = require('./commandbox');
+var Header = require('./header');
 
 var Home = React.createClass({
   getInitialState: function () {
@@ -27,7 +27,7 @@ var Home = React.createClass({
   },
   clickHandler: function () {
     React.unmountComponentAtNode(document.getElementById('login-content'));
-    React.render(<CommandBox />, document.getElementById('header'));
+    React.render(<Header />, document.getElementById('header'));
     React.render(<Credentials accessKeyId={this.state.accessKeyId} secretAccessKey={this.state.secretAccessKey} />,
                  document.getElementById('card-container'));
   },
