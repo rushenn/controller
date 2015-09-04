@@ -15,19 +15,21 @@
  */
 
 var React = require('react');
+var Reflux = require('reflux');
+
+var commandboxStore = require('../stores/commandbox-store.js');
+var commandboxActions = require('../actions/commandbox-actions.js');
 
 var CommandBox = React.createClass({
-  getInitialState: function() {
-    return { commandString: '' };
-  },
-  handleChange: function(e){
-    this.setState({ commandString: e.target.value });
+  mixins: [Reflux.connect(commandboxStore)],
+  onChange(e) {
+    commandboxActions.argSet(e.target.value.replace('add ', ''));
   },
   render: function() {
     return (
-      <div id='top-search-wrap'>
-        <input type='text' value={this.state.commandString} onChange={this.handleChange} />
-      </div>
+        <div id='top-search-wrap'>
+          <input type='text' value={this.state.command + ' ' + this.state.arg} placeholder='Command Box' onChange={this.onChange} />
+        </div>
     );
   }
 });

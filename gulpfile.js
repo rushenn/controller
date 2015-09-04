@@ -21,6 +21,7 @@ var browserify = require('browserify');
 var less = require('gulp-less');
 var uglify = require('gulp-uglify');
 var streamify = require('gulp-streamify');
+var babelify = require('babelify');
 var rename = require('gulp-rename');
 var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
@@ -34,7 +35,9 @@ var paths = {
         'app/*.jsx',
         'app/components/*.jsx',
         'app/actions/*.js',
-        'app/stores/*.js'],
+        'app/stores/*.js',
+        'app/webshellapp/**/*.jsx',
+        'app/webshellapp/**/*.js'],
   vendor: mainBowerFiles({ filter: new RegExp('.*js$', 'i') }),
   fonts : 'app/fonts/**/*',
   images : 'app/img/**/*',
@@ -70,7 +73,7 @@ gulp.task('html', function() {
 })
 
 gulp.task('app', function() {
-  return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform('reactify')
+  return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform(babelify)
     .bundle()
     .pipe(source('app.min.js'))
     .pipe(streamify(uglify()))
