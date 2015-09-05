@@ -41,14 +41,14 @@ var Home = React.createClass({
     return (
       <div className='lc-block toggled' id='l-login'>
         <div className='input-group m-b-20'>
-          <span className='input-group-addon'><i className='fa fa-user'></i></span>
+          <span className='input-group-addon'><i className='zmdi zmdi-account'></i></span>
           <div className='fg-line'>
             <input type='text' className='form-control' placeholder='Username' />
           </div>
         </div>
 
         <div className='input-group m-b-20'>
-          <span className='input-group-addon'><i className='fa fa-male'></i></span>
+          <span className='input-group-addon'><i className='zmdi zmdi-male'></i></span>
           <div className='fg-line'>
             <input type='password' className='form-control' placeholder='Password' />
           </div>
@@ -65,7 +65,7 @@ var Home = React.createClass({
         </div>
 
         <a href='#' className='btn btn-login btn-danger btn-float' onClick={this.clickHandler}>
-          <i className='fa fa-angle-right'></i>
+          <i className='zmdi zmdi-arrow-right'></i>
         </a>
 
         <ul className='login-navigation'>
