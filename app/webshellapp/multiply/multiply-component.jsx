@@ -17,72 +17,60 @@
 var React = require('react');
 var Reflux = require('reflux');
 
-var addStore = require('./add-store');
+var multiplyStore = require('./multiply-store');
 var commandbox = require('../../actions/commandbox-actions.js');
 
-var Add = React.createClass({
-  mixins: [Reflux.connect(addStore)],
+var Multiply = React.createClass({
+  mixins: [Reflux.connect(multiplyStore)],
   componentDidMount() {
-    commandbox.commandSet('add');
+    commandbox.commandSet('multiply');
   },
-  addHandler() {
+  multiplyHandler() {
     var argSet = '';
-    if (this.state.five) argSet+='five ';
-    if (this.state.ten) argSet+='ten ';
-    if (this.state.fifteen) argSet+='fifteen ';
-    if (this.state.twenty) argSet+='twenty';
+    if (this.state.three) argSet+='three ';
+    if (this.state.nine) argSet+='nine ';
+    if (this.state.twelve) argSet+='twelve ';
     commandbox.argSet(argSet);
   },
-  addHandlerFive() {
-    this.state.five = !this.state.five;
-    this.addHandler();
+  multiplyHandlerThree() {
+    this.state.three = !this.state.three;
+    this.multiplyHandler();
   },
-  addHandlerTen() {
-    this.state.ten = !this.state.ten;
-    this.addHandler();
+  multiplyHandlerNine() {
+    this.state.nine = !this.state.nine;
+    this.multiplyHandler();
   },
-  addHandlerFifteen() {
-    this.state.fifteen = !this.state.fifteen;
-    this.addHandler();
-  },
-  addHandlerTwenty() {
-    this.state.twenty = !this.state.twenty;
-    this.addHandler();
+  multiplyHandlerTwelve() {
+    this.state.twelve = !this.state.twelve;
+    this.multiplyHandler();
   },
   render() {
     return (
       <div className='col-sm-4'>
         <div className='card'>
-          <div className='card-header bgm-blue'>
-            <h2>Total : {this.state.total}</h2>
+          <div className='card-header bgm-green'>
+            <h2>Total : {this.state.multiplyTotal}</h2>
           </div>
           <div className='card-body card-padding'>
             <div className='checkbox'>
               <label>
-                <input onChange={this.addHandlerFive} type='checkbox' checked={this.state.five}/>
+                <input onChange={this.multiplyHandlerThree} type='checkbox' checked={this.state.three}/>
                 <i className='input-helper'></i>
-                Five
+                Three
               </label>
             </div>
             <div className='checkbox'>
               <label>
-                <input onChange={this.addHandlerTen} type='checkbox' checked={this.state.ten}/>
+                <input onChange={this.multiplyHandlerNine} type='checkbox' checked={this.state.nine}/>
                 <i className='input-helper'></i>
-                Ten
+                Nine
               </label>
             </div>
             <div className='checkbox'>
               <label>
-                <input onChange={this.addHandlerFifteen} type='checkbox' checked={this.state.fifteen}/>
+                <input onChange={this.multiplyHandlerTwelve} type='checkbox' checked={this.state.twelve}/>
                 <i className='input-helper'></i>
-                Fifteen
-              </label>
-            </div>
-            <div className='checkbox'>
-              <label>
-                <input onChange={this.addHandlerTwenty} type='checkbox' checked={this.state.twenty}/>
-                <i className='input-helper'></i>
-                Twenty
+                Twelve
               </label>
             </div>
           </div>
@@ -92,4 +80,4 @@ var Add = React.createClass({
   }
 });
 
-module.exports = Add;
+module.exports = Multiply;
