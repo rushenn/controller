@@ -17,53 +17,56 @@
 var Reflux = require('reflux');
 var commandboxStore = require('../../stores/commandbox-store.js');
 
-var addStore = Reflux.createStore({
+var multiplyStore = Reflux.createStore({
   init() {
     this.listenTo(commandboxStore, this.onCommandUpdate);
   },
   onCommandUpdate(cmd) {
     var obj = {
-      five: false,
-      ten: false,
-      fifteen: false,
-      twenty: false,
-      total: 0
+      three: false,
+      nine: false,
+      twelve: false,
+      multiplyTotal: 0
     };
     if (!cmd.arg) {
       cmd.arg = '';
     }
     cmd.arg.split(' ').map(function(s) {
       switch(s) {
-      case 'five':
-        obj.five = true;
-        obj.total += 5;
+      case 'three':
+        obj.three = true;
+        if (obj.multiplyTotal === 0) {
+          obj.multiplyTotal = 1
+        }
+        obj.multiplyTotal *= 3;
         break;
-      case 'ten':
-        obj.ten = true;
-        obj.total += 10;
+      case 'nine':
+        obj.nine = true;
+        if (obj.multiplyTotal === 0) {
+          obj.multiplyTotal = 1
+        }
+        obj.multiplyTotal *= 9;
         break;
-      case 'fifteen':
-        obj.fifteen = true;
-        obj.total += 15;
-        break;
-      case 'twenty':
-        obj.twenty = true;
-        obj.total += 20;
+      case 'twelve':
+        obj.twelve = true;
+        if (obj.multiplyTotal === 0) {
+          obj.multiplyTotal = 1
+        }
+        obj.multiplyTotal *= 12;
         break;
       }
     })
     this.trigger(obj);
   },
   data: {
-    five: false,
-    ten: false,
-    fifteen: false,
-    twenty: false,
-    total: 0
+    three: false,
+    nine: false,
+    twelve: false,
+    mutliplyTotal: 0
   },
   getInitialState() {
     return this.data
   }
 });
 
-module.exports = addStore;
+module.exports = multiplyStore;

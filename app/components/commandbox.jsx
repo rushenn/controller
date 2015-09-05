@@ -23,7 +23,8 @@ var commandboxActions = require('../actions/commandbox-actions.js');
 var CommandBox = React.createClass({
   mixins: [Reflux.connect(commandboxStore)],
   onChange(e) {
-    commandboxActions.argSet(e.target.value.replace('add ', ''));
+    var command = this.state.command + ' '
+    commandboxActions.argSet(e.target.value.replace(command, ''));
   },
   render: function() {
     return (
