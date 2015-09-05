@@ -30,7 +30,7 @@ var Layout = React.createClass({
       heading: 'bgm-cyan',
       color: 'bgm-cyan',
       buttonCustomClass: 'btn bgm-blue-gray btn-float waves-effect waves-effect waves-circle waves-float',
-      buttonCustomIcon: 'fa fa-paper-plane'
+      buttonCustomIcon: 'zmdi zmdi-mail-send'
     };
   },
   render: function() {
