@@ -19,8 +19,8 @@ var Router = require('react-router');
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 
-var Layout = require('../components/layout');
-var Home = require('../components/home');
+var Layout = require('../modules/layout');
+var Home = require('../modules/home');
 
 var routes = (
   <Route name='layout' path='/' handler={Layout}>

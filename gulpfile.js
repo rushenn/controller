@@ -36,8 +36,7 @@ var paths = {
         'app/components/*.jsx',
         'app/actions/*.js',
         'app/stores/*.js',
-        'app/webshellapp/**/*.jsx',
-        'app/webshellapp/**/*.js'],
+        'app/modules/*.jsx'],
   vendor: mainBowerFiles({ filter: new RegExp('.*js$', 'i') }),
   fonts : 'app/fonts/**/*',
   images : 'app/img/**/*',
@@ -76,7 +75,7 @@ gulp.task('app', function() {
   return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform(babelify)
     .bundle()
     .pipe(source('app.min.js'))
-    .pipe(streamify(uglify()))
+    // .pipe(streamify(uglify()))
     .pipe(gulp.dest('dist'))
 })
 
