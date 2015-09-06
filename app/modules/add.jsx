@@ -17,13 +17,48 @@
 var React = require('react');
 var Reflux = require('reflux');
 
-var addStore = require('./add-store');
-var commandbox = require('../../actions/commandbox-actions.js');
+var commandbox = require('./commandbox');
 
-var Add = React.createClass({
-  mixins: [Reflux.connect(addStore)],
+var Store = Reflux.createStore({
+  init() {
+    this.listenTo(commandbox.Store, this.onCommandUpdate);
+  },
+  onCommandUpdate(cmd) {
+    // console.log(cmd);
+    var obj = {
+      five: false,
+      ten: false,
+      fifteen: false,
+      twenty: false,
+      total: 0
+    };
+    if (!cmd.arg) cmd.arg = '';
+    cmd.arg.split(' ').map(function(s) {
+      switch(s) {
+      case 'five': obj.five = true; obj.total += 5; break;
+      case 'ten': obj.ten = true; obj.total += 10; break;
+      case 'fifteen': obj.fifteen = true; obj.total += 15; break;
+      case 'twenty': obj.twenty = true; obj.total += 20; break;
+      }
+    })
+    this.trigger(obj);
+  },
+  data: {
+    five: false,
+    ten: false,
+    fifteen: false,
+    twenty: false,
+    total: 0
+  },
+  getInitialState() {
+    return this.data
+  }
+});
+
+var Component = React.createClass({
+  mixins: [Reflux.connect(Store)],
   componentDidMount() {
-    commandbox.commandSet('add');
+    commandbox.Actions.commandSet('add');
   },
   addHandler() {
     var argSet = '';
@@ -31,7 +66,7 @@ var Add = React.createClass({
     if (this.state.ten) argSet+='ten ';
     if (this.state.fifteen) argSet+='fifteen ';
     if (this.state.twenty) argSet+='twenty';
-    commandbox.argSet(argSet);
+    commandbox.Actions.argSet(argSet);
   },
   addHandlerFive() {
     this.state.five = !this.state.five;
@@ -92,4 +127,6 @@ var Add = React.createClass({
   }
 });
 
-module.exports = Add;
+module.exports = {
+  Store, Component
+};

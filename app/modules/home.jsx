@@ -17,8 +17,8 @@
 var React = require('react');
 var Credentials = require('./credentials');
 var Header = require('./header');
-var Add = require('../webshellapp/add/add-component');
-var Multiply = require('../webshellapp/multiply/multiply-component');
+var Multiply = require('./multiply').Component;
+var Add = require('./add').Component;
 var Cards = require('./cards');
 
 var Home = React.createClass({

@@ -14,6 +14,19 @@
  * limitations under the License.
  */
 
-var Reflux = require('reflux');
+var React = require('react');
+var CommandBox = require('./commandbox').Component;
+var Notification = require('./notification');
 
-module.exports = Reflux.createActions(['commandSet', 'argSet']);
+var Header = React.createClass({
+  render: function() {
+    return (
+      <div>
+      <CommandBox />
+      <Notification />
+      </div>
+    )
+  }
+});
+
+module.exports = Header

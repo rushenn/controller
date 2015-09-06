@@ -17,14 +17,30 @@
 var React = require('react');
 var Reflux = require('reflux');
 
-var commandboxStore = require('../stores/commandbox-store.js');
-var commandboxActions = require('../actions/commandbox-actions.js');
+var Actions = Reflux.createActions(['commandSet', 'argSet']);
 
-var CommandBox = React.createClass({
-  mixins: [Reflux.connect(commandboxStore)],
+var Store = Reflux.createStore({
+  listenables: [Actions],
+  initialstate: {
+    command: '',
+    arg: ''
+  },
+  getInitialState() {
+    return this.initialstate;
+  },
+  onCommandSet(command) {
+    this.trigger({command});
+  },
+  onArgSet(arg) {
+    this.trigger({arg});
+  }
+});
+
+var Component = React.createClass({
+  mixins: [Reflux.connect(Store)],
   onChange(e) {
     var command = this.state.command + ' '
-    commandboxActions.argSet(e.target.value.replace(command, ''));
+    Actions.argSet(e.target.value.replace(command, ''));
   },
   render: function() {
     return (
@@ -35,4 +51,6 @@ var CommandBox = React.createClass({
   }
 });
 
-module.exports = CommandBox;
+module.exports = {
+  Actions, Store, Component
+};
