@@ -36,18 +36,29 @@ var Notification = React.createClass({
               <div className='dropdown-menu dropdown-menu-lg pull-right'>
               </div>
             </li>
-            <li className='dropdown hidden-xs'>
+            <li className='dropdown'>
               <a data-toggle='dropdown' className='tm-task' href='#'>
                 <i className='tmn-counts'>2</i>
               </a>
               <div className='dropdown-menu dropdown-menu-lg pull-right'>
               </div>
             </li>
-            <li className='dropdown hidden-xs'>
-              <a data-toggle='dropdown' className='tm-settings' href='#'>
-              </a>
-              <div className='dropdown-menu dm-icon pull-right'>
-              </div>
+            <li className='dropdown'>
+              <a data-toggle='dropdown' className='tm-settings' href='#'></a>
+              <ul className='dropdown-menu dm-icon pull-right'>
+                <li className='hidden-xs'>
+                  <a data-action='fullscreen' href='#'><i className='zmdi zmdi-fullscreen'></i> Toggle fullscreen</a>
+                </li>
+                <li>
+                  <a data-action='clear-localstorage' href='#'><i className='zmdi zmdi-delete'></i> Clear local storage</a>
+                </li>
+                <li>
+                  <a href='#'><i className='zmdi zmdi-face'></i> Privacy Settings</a>
+                </li>
+                <li>
+                  <a href='#'><i className='zmdi zmdi-settings'></i> Other Settings</a>
+                </li>
+              </ul>
             </li>
           </ul>
         </li>
