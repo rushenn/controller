@@ -18,7 +18,7 @@ import React from 'react';
 
 class Card extends React.Component {
   render() {
-    var cardHeaderColor = 'card-header ' + this.props.color;
+    var cardHeaderColor = `card-header ${this.props.color}`;
     return (
       <div className='card'>
         <div className={cardHeaderColor}>

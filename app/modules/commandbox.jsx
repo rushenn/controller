@@ -17,8 +17,12 @@
 import React from 'react';
 import Reflux from 'reflux';
 
-var CmdBoxActions = Reflux.createActions(['commandSet', 'argSet']);
-var CmdBoxStore = Reflux.createStore({
+const CmdBoxActions = Reflux.createActions([
+  'commandSet',
+  'argSet'
+]);
+
+const CmdBoxStore = Reflux.createStore({
   listenables: [CmdBoxActions],
   initialstate: {
     command: '',
@@ -35,7 +39,7 @@ var CmdBoxStore = Reflux.createStore({
   }
 });
 
-var CmdBoxComponent = React.createClass({
+const CmdBoxComponent = React.createClass({
   mixins: [Reflux.connect(CmdBoxStore)],
   onChange(e) {
     var command = this.state.command + ' '
