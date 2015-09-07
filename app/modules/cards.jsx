@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var Card = require('./card');
+import React from 'react';
+import Card from './card';
 
-var Cards = React.createClass({
-  render: function() {
+class Cards extends React.Component {
+  render() {
     return (
       <div className='row'>
         <div className='col-sm-4'>
@@ -33,6 +33,6 @@ var Cards = React.createClass({
       </div>
     )
   }
-})
+}
 
-module.exports = Cards
+export default Cards

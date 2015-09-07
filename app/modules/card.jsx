@@ -14,26 +14,10 @@
  * limitations under the License.
  */
 
-var React = require('react');
+import React from 'react';
 
-var Layout = React.createClass({
-  propTypes: {
-    message: React.PropTypes.string.isRequired,
-    heading: React.PropTypes.string.isRequired,
-    color: React.PropTypes.string.isRequired,
-    buttonCustomClass: React.PropTypes.string,
-    buttonCustomIcon: React.PropTypes.string
-  },
-  getDefaultProps: function() {
-    return {
-      message: 'Lorem ipsum dore',
-      heading: 'bgm-cyan',
-      color: 'bgm-cyan',
-      buttonCustomClass: 'btn bgm-blue-gray btn-float waves-effect waves-effect waves-circle waves-float',
-      buttonCustomIcon: 'zmdi zmdi-mail-send'
-    };
-  },
-  render: function() {
+class Card extends React.Component {
+  render() {
     var cardHeaderColor = 'card-header ' + this.props.color;
     return (
       <div className='card'>
@@ -49,6 +33,22 @@ var Layout = React.createClass({
       </div>
     )
   }
-})
+}
 
-module.exports = Layout;
+Card.defaultProps = {
+  message: 'Lorem ipsum dore',
+  heading: 'bgm-cyan',
+  color: 'bgm-cyan',
+  buttonCustomClass: 'btn bgm-blue-gray btn-float waves-effect waves-effect waves-circle waves-float',
+  buttonCustomIcon: 'zmdi zmdi-mail-send'
+};
+
+Card.propTypes =   {
+  message: React.PropTypes.string.isRequired,
+  heading: React.PropTypes.string.isRequired,
+  color: React.PropTypes.string.isRequired,
+  buttonCustomClass: React.PropTypes.string,
+  buttonCustomIcon: React.PropTypes.string
+}
+
+export default Card;

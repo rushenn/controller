@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-var React = require('react');
+import React from 'react';
 
-var Credentials = React.createClass({
-  propTypes: {
-    accessKeyId: React.PropTypes.string.isRequired,
-    secretAccessKey: React.PropTypes.string.isRequired
-  },
-  render: function() {
+class Credentials extends React.Component {
+  render() {
     return (
       <div className='card'>
         <div className='card-header'>
@@ -38,6 +34,11 @@ var Credentials = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = Credentials;
+Credentials.propTypes = {
+  accessKeyId: React.PropTypes.string.isRequired,
+  secretAccessKey: React.PropTypes.string.isRequired
+}
+
+export default Credentials;

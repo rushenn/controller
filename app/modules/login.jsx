@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-var React = require('react');
+import React from 'react';
 
-var Login = React.createClass({
-  render: function() {
+class Login extends React.Component {
+  render() {
     return (
       <div>
       </div>
     );
   }
-});
+}
 
-module.exports = Login;
+export default Login;

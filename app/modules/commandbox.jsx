@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var Reflux = require('reflux');
+import React from 'react';
+import Reflux from 'reflux';
 
-var Actions = Reflux.createActions(['commandSet', 'argSet']);
-
-var Store = Reflux.createStore({
-  listenables: [Actions],
+var CmdBoxActions = Reflux.createActions(['commandSet', 'argSet']);
+var CmdBoxStore = Reflux.createStore({
+  listenables: [CmdBoxActions],
   initialstate: {
     command: '',
     arg: ''
@@ -36,21 +35,19 @@ var Store = Reflux.createStore({
   }
 });
 
-var Component = React.createClass({
-  mixins: [Reflux.connect(Store)],
+var CmdBoxComponent = React.createClass({
+  mixins: [Reflux.connect(CmdBoxStore)],
   onChange(e) {
     var command = this.state.command + ' '
-    Actions.argSet(e.target.value.replace(command, ''));
+    CmdBoxActions.argSet(e.target.value.replace(command, ''));
   },
-  render: function() {
+  render() {
     return (
         <div id='top-search-wrap'>
-          <input type='text' value={this.state.command + ' ' + this.state.arg} placeholder='Command Box' onChange={this.onChange} />
+          <input type='text' value={this.state.command + ' ' + this.state.arg}  placeholder='Command Box' onChange={this.onChange} />
         </div>
     );
   }
 });
 
-module.exports = {
-  Actions, Store, Component
-};
+export default { CmdBoxActions, CmdBoxStore, CmdBoxComponent };

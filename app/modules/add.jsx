@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var Reflux = require('reflux');
-
-var commandbox = require('./commandbox');
+import React from 'react';
+import Reflux from 'reflux';
+import { CmdBoxActions, CmdBoxStore } from './commandbox';
 
 var Store = Reflux.createStore({
   init() {
-    this.listenTo(commandbox.Store, this.onCommandUpdate);
+    this.listenTo(CmdBoxStore, this.onCommandUpdate);
   },
   onCommandUpdate(cmd) {
     // console.log(cmd);
@@ -55,10 +54,10 @@ var Store = Reflux.createStore({
   }
 });
 
-var Component = React.createClass({
+var AddComponent = React.createClass({
   mixins: [Reflux.connect(Store)],
   componentDidMount() {
-    commandbox.Actions.commandSet('add');
+    CmdBoxActions.commandSet('add');
   },
   addHandler() {
     var argSet = '';
@@ -66,7 +65,7 @@ var Component = React.createClass({
     if (this.state.ten) argSet+='ten ';
     if (this.state.fifteen) argSet+='fifteen ';
     if (this.state.twenty) argSet+='twenty';
-    commandbox.Actions.argSet(argSet);
+    CmdBoxActions.argSet(argSet);
   },
   addHandlerFive() {
     this.state.five = !this.state.five;
@@ -127,6 +126,4 @@ var Component = React.createClass({
   }
 });
 
-module.exports = {
-  Store, Component
-};
+export default AddComponent;

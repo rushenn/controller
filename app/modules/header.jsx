@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var CommandBox = require('./commandbox').Component;
-var Notification = require('./notification');
+import React from 'react';
+import { CmdBoxComponent } from './commandbox';
+import Notification from './notification';
 
-var Header = React.createClass({
-  render: function() {
+class Header extends React.Component {
+  render() {
     return (
       <div>
-      <CommandBox />
+      <CmdBoxComponent />
       <Notification />
       </div>
     )
   }
-});
+}
 
-module.exports = Header
+export default Header;
