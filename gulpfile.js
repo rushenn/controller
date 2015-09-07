@@ -15,6 +15,7 @@
  */
 
 var gulp = require('gulp');
+var util = require('gulp-util');
 var del = require('del');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
@@ -37,11 +38,16 @@ var paths = {
         'app/actions/*.js',
         'app/stores/*.js',
         'app/modules/*.jsx'],
+  lib: ['app/lib/*.js',
+        'app/lib/**/*.js'],
+  less : ['app/styles/*.less',
+          'app/styles/**/*.less'],
   vendor: mainBowerFiles({ filter: new RegExp('.*js$', 'i') }),
   fonts : 'app/fonts/**/*',
-  images : 'app/img/**/*',
-  less : ['app/styles/*.less', 'app/styles/**/*.less']
+  images : 'app/img/**/*'
 }
+
+var production = !!util.env.production
 
 gulp.task('clean', function() {
   return del(['dist']);
@@ -50,7 +56,7 @@ gulp.task('clean', function() {
 gulp.task('less', function () {
   return gulp.src('./app/styles/app.less') //path to your main less file
     .pipe(less())
-    .pipe(minifycss())
+    .pipe(production ? minifycss() : util.noop())
     .pipe(rename('app.min.css'))
     .pipe(gulp.dest('dist'))
 });
@@ -62,7 +68,7 @@ gulp.task('fonts', function() {
 
 gulp.task('images', function() {
   return gulp.src(paths.images, {base:'app'})
-    .pipe(imagemin())
+    .pipe(production ? imagemin() : util.noop())
     .pipe(gulp.dest('dist'))
 })
 
@@ -75,14 +81,21 @@ gulp.task('app', function() {
   return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform(babelify)
     .bundle()
     .pipe(source('app.min.js'))
-    // .pipe(streamify(uglify()))
+    .pipe(production ? streamify(uglify()) : util.noop())
     .pipe(gulp.dest('dist'))
 })
 
 gulp.task('vendor', function() {
   return gulp.src(paths.vendor)
     .pipe(concat('vendor.min.js'))
-    .pipe(uglify())
+    .pipe(production ? uglify() : util.noop())
+    .pipe(gulp.dest('dist'))
+})
+
+gulp.task('lib', function() {
+  return gulp.src(paths.lib)
+    .pipe(concat('lib.min.js'))
+    .pipe(production ? uglify() : util.noop())
     .pipe(gulp.dest('dist'))
 })
 
@@ -120,7 +133,7 @@ gulp.task('lint', function () {
     .pipe(eslint.failOnError());
 });
 
-gulp.task('scripts', ['app', 'vendor'])
+gulp.task('scripts', ['app', 'vendor', 'lib'])
 
 gulp.task('build', ['less', 'fonts', 'images', 'html', 'scripts', 'lint'])
 
