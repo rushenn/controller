@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
+import React from 'react';
+import { RouteHandler } from 'react-router';
 
-var Layout = React.createClass({
-  render: function() {
+class Layout extends React.Component {
+  render() {
     return (
       <div className='App'>
         <RouteHandler />
       </div>
     );
   }
-});
+}
 
-module.exports = Layout;
+export default Layout;

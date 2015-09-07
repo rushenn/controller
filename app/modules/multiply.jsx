@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var Reflux = require('reflux');
-
-var commandbox = require('./commandbox');
+import React from 'react';
+import Reflux from 'reflux';
+import { CmdBoxActions, CmdBoxStore } from './commandbox';
 
 var Store = Reflux.createStore({
   init() {
-    this.listenTo(commandbox.Store, this.onCommandUpdate);
+    this.listenTo(CmdBoxStore, this.onCommandUpdate);
   },
   onCommandUpdate(cmd) {
     var obj = {
@@ -71,17 +70,17 @@ var Store = Reflux.createStore({
   }
 });
 
-var Component = React.createClass({
+var MultiplyComponent = React.createClass({
   mixins: [Reflux.connect(Store)],
   componentDidMount() {
-    commandbox.Actions.commandSet('multiply');
+    CmdBoxActions.commandSet('multiply');
   },
   multiplyHandler() {
     var argSet = '';
     if (this.state.three) argSet+='three ';
     if (this.state.nine) argSet+='nine ';
     if (this.state.twelve) argSet+='twelve ';
-    commandbox.Actions.argSet(argSet);
+    CmdBoxActions.argSet(argSet);
   },
   multiplyHandlerThree() {
     this.state.three = !this.state.three;
@@ -131,4 +130,4 @@ var Component = React.createClass({
   }
 });
 
-module.exports = {Component};
+export default MultiplyComponent;

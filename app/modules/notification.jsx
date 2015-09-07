@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-var React = require('react');
+import React from 'react';
 
-var Notification = React.createClass({
-  render: function() {
+class Notification extends React.Component {
+  render() {
     return (
       <div className='header-inner'>
         <li className='pull-right'>
@@ -65,6 +65,6 @@ var Notification = React.createClass({
       </div>
     )
   }
-});
+}
 
-module.exports = Notification;
+export default Notification;
