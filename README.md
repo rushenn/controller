@@ -10,6 +10,12 @@ $ gulp serve
 
 ```
 
+For minified js and css
+
+```
+$ gulp --production serve
+```
+
 Open your browser at http://localhost:8000
 
 ### Testing with golang http server
