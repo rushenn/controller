@@ -14,23 +14,13 @@
  * limitations under the License.
  */
 
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
+import React from 'react';
+import { Router, Route, DefaultRoute } from 'react-router';
+import Layout from '../modules/layout';
+import Home from '../modules/home';
 
-var Layout = require('../modules/layout');
-var Home = require('../modules/home');
-
-var routes = (
+export default (
   <Route name='layout' path='/' handler={Layout}>
     <DefaultRoute handler={Home} />
   </Route>
 );
-
-
-exports.start = function() {
-  Router.run(routes, function (Handler) {
-    React.render(<Handler />, document.getElementById('login-content'));
-  });
-}

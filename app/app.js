@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
-var Routes = require('./config/routes');
+import React from 'react';
+import Router from 'react-router';
+import routes from './config/routes';
 
-Routes.start();
+Router.run(routes, (Handler, state) => {
+  React.render(<Handler {...state} />, document.getElementById('login-content'));
+});

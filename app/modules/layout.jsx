@@ -21,7 +21,7 @@ class Layout extends React.Component {
   render() {
     return (
       <div className='App'>
-        <RouteHandler />
+        <RouteHandler {...this.props} />
       </div>
     );
   }

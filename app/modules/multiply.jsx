@@ -18,7 +18,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import { CmdBoxActions, CmdBoxStore } from './commandbox';
 
-var Store = Reflux.createStore({
+const Store = Reflux.createStore({
   init() {
     this.listenTo(CmdBoxStore, this.onCommandUpdate);
   },
@@ -70,7 +70,7 @@ var Store = Reflux.createStore({
   }
 });
 
-var MultiplyComponent = React.createClass({
+const MultiplyComponent = React.createClass({
   mixins: [Reflux.connect(Store)],
   componentDidMount() {
     CmdBoxActions.commandSet('multiply');
