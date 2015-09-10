@@ -15,15 +15,13 @@
  */
 
 import React from 'react';
-import { CmdBoxComponent } from './commandbox';
-import Notification from './notification';
+import Dropdowns from './dropdowns';
 
 class Header extends React.Component {
   render() {
     return (
       <div>
-      <CmdBoxComponent />
-      <Notification />
+      <Dropdowns />
       </div>
     )
   }
