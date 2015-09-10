@@ -30,9 +30,8 @@ class Home extends React.Component {
     React.render(<Header />, document.getElementById('header'));
     React.render(<AddComponent />, document.getElementById('add'));
     React.render(<MultiplyComponent />, document.getElementById('multiply'));
-    React.render(<Credentials accessKeyId='BKIKJAA5BMMU2RHO6IBB' secretAccessKey='V7f1C\wQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr1' />,
-                 document.getElementById('credentials'));
-    React.render(<Cards />, document.getElementById('custom-cards'))
+    React.render(<Credentials accessKeyId='BKIKJAA5BMMU2RHO6IBB' secretAccessKey='V7f1C\wQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr1' />, document.getElementById('credentials'));
+    React.render(<Cards />, document.getElementById('custom-cards'));
   }
   render() {
     return (
