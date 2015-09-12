@@ -13,21 +13,21 @@
     "mail": ""
   },
   "dependencies": {
+    "material-ui": "^0.11.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "react-tap-event-plugin": "^0.1.7"
   },
   "devDependencies": {
-  "babel-eslint": "^4.1.1",
-  "babelify": "^6.1.2",
-  "browserify": "^11.1.0",
-  "del": "^2.0.2",
-  "eslint-plugin-react": "^3.3.2",
-  "gulp-concat": "^2.6.0",
-  "gulp-eslint": "^1.0.0",
-  "gulp-webserver": "^0.9.1",
-  "material-ui": "^0.11.0",
-  "react": "^0.13.3",
-  "react-router": "^0.13.3",
-  "react-tap-event-plugin": "^0.1.7",
-  "vinyl-source-stream": "^1.1.0",
-  "gulp": "^3.9.0"
+    "babel-eslint": "^4.1.1",
+    "babelify": "^6.1.2",
+    "browserify": "^11.1.0",
+    "del": "^2.0.2",
+    "eslint-plugin-react": "^3.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-webserver": "^0.9.1",
+    "vinyl-source-stream": "^1.1.0",
+    "gulp": "^3.9.0"
   }
 }
