@@ -17,15 +17,15 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <ReactCSSTransitionGroup transitionName="home" transitionAppear={false} transitionLeave={false}>
-        <div className="row center-xs middle-xs" style={{minHeight: window.innerHeight - 60 + "px", backgroundColor: Colors.grey100}}>
-          <div className="col-xs-4">
-            <div className="box">
-              <Menu style={{position: 'inherit'}} className = "col-xs-3" onItemTouchTap={this.onItemTouchTap}>
-                <MenuItem primaryText="Servers" route="/servers"/>
-                <MenuItem primaryText="Version" route="/version"/>
-                <MenuItem primaryText="Donut" route="/donut"/>
-                <MenuItem primaryText="Logs" route="/logs"/>
+      <ReactCSSTransitionGroup transitionName='home' transitionAppear={false} transitionLeave={false}>
+        <div className='row center-xs middle-xs' style={{minHeight: window.innerHeight - 50 + 'px', backgroundColor: Colors.grey100}}>
+          <div className='col-xs-4'>
+            <div className='box'>
+              <Menu desktop={true} style={{position: 'inherit'}} className='col-xs-3' width={320} onItemTouchTap={this.onItemTouchTap}>
+                <MenuItem primaryText='Servers' route='/servers'/>
+                <MenuItem primaryText='Version' route='/version'/>
+                <MenuItem primaryText='SystemInfo' route='/systeminfo'/>
+                <MenuItem primaryText='Auth' route='/auth'/>
               </Menu>
             </div>
           </div>
