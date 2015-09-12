@@ -11,7 +11,7 @@ import CardText from 'material-ui/lib/card/card-text'
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-class ServerVersion extends React.Component {
+class Version extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -69,8 +69,8 @@ class ServerVersion extends React.Component {
   }
 }
 
-ServerVersion.contextTypes = {
+Version.contextTypes = {
   router: React.PropTypes.func.isRequired
 }
 
-export default ServerVersion;
+export default Version;

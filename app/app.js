@@ -8,9 +8,9 @@ import Router, { Route, DefaultRoute } from 'react-router';
 injectTapEventPlugin();
 
 import Home from './modules/home';
-import Servers from './modules/servers';
-import ServerVersion from './modules/server-version';
 import Auth from './modules/auth';
+import Version from './modules/version';
+import Servers from './modules/servers';
 
 // Get mui Components
 let ThemeManager = new mui.Styles.ThemeManager();
@@ -30,10 +30,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <AppBar
-        title='Minio Controller'
-        showMenuIconButton={false}
-        style={{marginBottom:'4px'}}
+        <AppBar title='Minio Controller'
+                showMenuIconButton={false}
+                style={{marginBottom:'4px'}}
         />
         <div style={{width:'1024px', margin:'auto', minHeight:window.innerHeight - 64 + 'px'}} >
           <RouteHandler />
@@ -55,7 +54,7 @@ const AppRoutes = (
   <Route path='/' handler={App}>
     <DefaultRoute handler={Home} />
     <Route path='/servers' handler={Servers} />
-    <Route path='/version' handler={ServerVersion} />
+    <Route path='/version' handler={Version} />
     <Route path='/auth' handler={Auth} />
   </Route>
 );
