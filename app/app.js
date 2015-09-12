@@ -17,6 +17,10 @@ let ThemeManager = new mui.Styles.ThemeManager();
 let AppBar = mui.AppBar;
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onLeftIconButtonTouchTap = this.onLeftIconButtonTouchTap.bind(this);
+  }
   getChildContext() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
@@ -27,12 +31,16 @@ class App extends React.Component {
       this.setState({});
     });
   }
+  onLeftIconButtonTouchTap(e) {
+    e.preventDefault();
+  }
   render() {
     return (
       <div>
         <AppBar title='Minio Controller'
-                showMenuIconButton={false}
+                showMenuIconButton={true}
                 style={{marginBottom:'4px'}}
+                zDepth={0}
         />
         <div style={{width:'1024px', margin:'auto', minHeight:window.innerHeight - 64 + 'px'}} >
           <RouteHandler />
