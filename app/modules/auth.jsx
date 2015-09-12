@@ -7,11 +7,11 @@ import CardText from 'material-ui/lib/card/card-text'
 
 // TODO enable later
 // import jsonrpc from '../lib/jsonrpc';
-// let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'Version'});
+// let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'Auth'});
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-class ServerVersion extends React.Component {
+class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -28,8 +28,8 @@ class ServerVersion extends React.Component {
 //      this.setState({state: data})
 //    })
     this.setState({state: this.state.data.push({
-      'version':'0.0.1',
-      'build-date':'Sat, 12 Sep 2015 05:13:02 GMT'
+      'accesskey':'HZ75FITE8IPCOO3KN5L5',
+      'secretaccesskey':'5cZ3szv/gP7yJN1Sw9Wm1x7dLYs7aLq0XuCF5tnP'
     })})
   }
   onClickIcon() {
@@ -46,14 +46,14 @@ class ServerVersion extends React.Component {
             <div className='col-xs-8'></div>
             <div className='col-xs-8'>
               <Card initiallyExpanded={true}>
-                <h3 style={{textAlign:'center'}}>Get Version</h3>
+                <h3 style={{textAlign:'center'}}> Get Auth</h3>
                 <IconButton onClick={this.onClick}>
                   <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
                 </IconButton>
                 <CardText expandable={true}>
-                  {this.state.data.map(function(version) {
+                  {this.state.data.map(function(auth) {
                     return (
-                      <h3 style={{textAlign:'center'}}>{version}</h3>
+                      <h3 style={{textAlign:'center'}}>{auth}</h3>
                     )
                    })}
                 </CardText>
@@ -66,8 +66,8 @@ class ServerVersion extends React.Component {
   }
 }
 
-ServerVersion.contextTypes = {
+Auth.contextTypes = {
   router: React.PropTypes.func.isRequired
 }
 
-export default ServerVersion;
+export default Auth;
