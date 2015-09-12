@@ -1,48 +1,31 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="Minio Controller">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <title>Material UI Routing</title>
+    <style>
+      * {
+        margin: 0; padding: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
 
-    <!-- load zmdi font -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="app.min.css">
-    <!-- endbuild -->
-</head>
-  <body>
-    <!-- command search box -->
-    <header id="header"></header>
-    <!-- add a dummy card for bottom padding -->
-    <div id="dummy-card" class="card"></div>
-    <!-- login element -->
-    <div id="login-content"></div>
-    <!--[if lt IE 10]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <!-- card container -->
-    <section id="main">
-      <section id="content">
-        <div class="container">
-          <div class="row">
-            <div id="add"> </div>
-            <div id="multiply"> </div>
-          </div>
-          <div id="credentials"></div>
-          <div id="custom-cards"></div>
-        </div>
-      </section>
-    </section>
-    <!-- build:js(.tmp) scripts/app.js -->
-    <script src="vendor.min.js"></script>
-    <script src="lib.min.js"></script>
-    <script src="app.min.js"></script>
-    <!-- endbuild -->
+      .content {
+        padding: 20px;
+      }
+
+      .servers-appear {
+        opacity: 0.01;
+        transition: opacity .3s ease-in;
+      }
+
+      .servers-appear.servers-appear-active {
+        opacity: 1;
+      }
+
+    </style>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.2.0/flexboxgrid.min.css" type="text/css" >
+  </head>
+  <body style="background-color: #f5f5f5">
+    <script src="lib.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
