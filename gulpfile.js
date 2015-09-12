@@ -4,7 +4,6 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var server = require('gulp-webserver');
 var source = require('vinyl-source-stream');
-var concat = require('gulp-concat');
 var eslint = require('gulp-eslint');
 
 var paths = {
