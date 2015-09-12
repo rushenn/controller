@@ -16,7 +16,8 @@
     "material-ui": "^0.11.0",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
-    "react-tap-event-plugin": "^0.1.7"
+    "react-tap-event-plugin": "^0.1.7",
+    "superagent-es6-promise": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.1",
