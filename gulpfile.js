@@ -19,12 +19,6 @@ gulp.task('clean', function() {
     return del(['dist']);
 });
 
-gulp.task('lib', function() {
-    return gulp.src(paths.lib)
-            .pipe(concat('lib.js'))
-            .pipe(gulp.dest('dist'))
-});
-
 gulp.task('main', function() {
     return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform(babelify)
             .bundle()
@@ -65,7 +59,7 @@ gulp.task('watch', function() {
     gulp.watch(paths.html, ['html']);
 });
 
-gulp.task('serve', ['watch'], function() {
+gulp.task('serve', ['build', 'watch'], function() {
     gulp.src('dist')
       .pipe(server({
         livereload: true,
@@ -77,6 +71,6 @@ gulp.task('serve', ['watch'], function() {
     }));
 });
 
-gulp.task('build', ['lib', 'main', 'css', 'html', 'lint']);
+gulp.task('build', ['main', 'css', 'html', 'lint']);
 
 gulp.task('default', ['build']);
