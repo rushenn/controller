@@ -65,5 +65,4 @@ Servers.contextTypes = {
   router: React.PropTypes.func.isRequired
 }
 
-
 export default Servers;
