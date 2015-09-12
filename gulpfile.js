@@ -59,7 +59,7 @@ gulp.task('watch', function() {
     gulp.watch(paths.html, ['html']);
 });
 
-gulp.task('serve', ['watch', 'build'], function() {
+gulp.task('serve', ['watch'], function() {
     gulp.src('dist')
       .pipe(server({
         livereload: true,

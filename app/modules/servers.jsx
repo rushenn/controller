@@ -1,10 +1,11 @@
 import React from 'react';
-import ClearContent from 'material-ui/lib/svg-icons/content/clear'
+import FontIcon from 'material-ui/lib/font-icon'
 import IconButton from 'material-ui/lib/icon-button'
 import TextField from 'material-ui/lib/text-field'
-import FlatButton from 'material-ui/lib/flat-button'
+import RaisedButton from 'material-ui/lib/raised-button'
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
+import Colors from 'material-ui/lib/styles/colors'
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -33,13 +34,13 @@ class Servers extends React.Component {
         <div style={{position:'relative', backgroundColor: 'white', minHeight:window.innerHeight - 60 + "px", padding: '30px'}}>
           <h2 style={{textAlign:'center'}}>Servers</h2>
           <IconButton style={{position:'absolute', right:'0', top:'0'}} onClick={this.onClick}>
-            <ClearContent />
+            <FontIcon className="material-icons" color={Colors.blue500} hoverColor={Colors.red500}>home</FontIcon>
           </IconButton>
           <div className="row center-xs">
             <div className="col-xs-6">
               <form onSubmit={this.onsubmit}>
                 <TextField ref="newserver" type="text" />
-                <FlatButton label="Add" type="submit" />
+                <RaisedButton label="Add" type="submit" />
               </form>
             </div>
             <div className="col-xs-12"></div>
