@@ -24,7 +24,7 @@ class Home extends React.Component {
               <Menu desktop={true} style={{position: 'inherit'}} className='col-xs-3' width={320} onItemTouchTap={this.onItemTouchTap}>
                 <MenuItem primaryText='Servers' route='/servers'/>
                 <MenuItem primaryText='Version' route='/version'/>
-                <MenuItem primaryText='SystemInfo' route='/systeminfo'/>
+                <MenuItem primaryText='ClusterInfo' route='/info'/>
                 <MenuItem primaryText='Auth' route='/auth'/>
               </Menu>
             </div>

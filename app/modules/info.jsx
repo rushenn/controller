@@ -4,22 +4,26 @@ import IconButton from 'material-ui/lib/icon-button'
 import Colors from 'material-ui/lib/styles/colors'
 
 import Card from 'material-ui/lib/card/card'
-import CardText from 'material-ui/lib/card/card-text'
-import CardTitle from 'material-ui/lib/card/card-title'
+
+import PieChart from 'react-d3/piechart/PieChart'
 
 // TODO enable later
 // import jsonrpc from '../lib/jsonrpc';
-// let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'Auth'});
+// let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'ClusterInfo'});
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-class Auth extends React.Component {
+class ClusterInfo extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
     this.state = {
-      data: []
+      data: [
+        {label: 'Server1 Disk Usage', value: 20.0},
+        {label: 'Server2 Disk Usage', value: 55.0},
+        {label: 'Server3 Disk Usage', value: 25.0}
+      ]
     }
   }
   onClick() {
@@ -28,11 +32,12 @@ class Auth extends React.Component {
 //        throw new Error(error)
 //      }
 //      this.setState({state: data})
-//    })
-    this.setState({state: this.state.data.push({
-      'accesskey':'HZ75FITE8IPCOO3KN5L5',
-      'secretaccesskey':'5cZ3szv/gP7yJN1Sw9Wm1x7dLYs7aLq0XuCF5tnP'
-    })})
+    //    })
+    this.setState({state: [
+      {label: 'Server1 Disk Usage', value: 20.0},
+      {label: 'Server2 Disk Usage', value: 55.0},
+      {label: 'Server3 Disk Usage', value: 25.0}
+    ]});
   }
   onClickIcon() {
     this.context.router.transitionTo('/');
@@ -48,20 +53,16 @@ class Auth extends React.Component {
             <div className='col-xs-8'></div>
             <div className='col-xs-8'>
               <Card initiallyExpanded={true}>
-                <CardTitle title='Get Auth' />
-                <IconButton onClick={this.onClick}>
-                  <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
-                </IconButton>
-                <CardText style={{textAlign: 'center'}} expandable={true}>
-                  {this.state.data.map(function(auth) {
-                    return (
-                      <div>
-                      AccessKeyID - {auth.accesskey} <br />
-                      SecretAccessKey - {auth.secretaccesskey}
-                      </div>
-                    )
-                   })}
-                </CardText>
+                <div></div>
+                <PieChart data={this.state.data}
+                          width={400}
+                          height={400}
+                          radius={100}
+                          innerRadius={20}
+                          sectorBorderColor="white"
+                          title="Pie Chart"
+                          hoverAnimation={true}
+                />
               </Card>
             </div>
           </div>
@@ -71,8 +72,8 @@ class Auth extends React.Component {
   }
 }
 
-Auth.contextTypes = {
+ClusterInfo.contextTypes = {
   router: React.PropTypes.func.isRequired
 }
 
-export default Auth;
+export default ClusterInfo;

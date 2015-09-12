@@ -2,8 +2,10 @@ import React from 'react';
 import FontIcon from 'material-ui/lib/font-icon'
 import IconButton from 'material-ui/lib/icon-button'
 import Colors from 'material-ui/lib/styles/colors'
+
 import Card from 'material-ui/lib/card/card'
 import CardText from 'material-ui/lib/card/card-text'
+import CardTitle from 'material-ui/lib/card/card-title'
 
 // TODO enable later
 // import jsonrpc from '../lib/jsonrpc';
@@ -46,10 +48,10 @@ class Version extends React.Component {
             <div className='col-xs-8'></div>
             <div className='col-xs-8'>
               <Card initiallyExpanded={true}>
+                <CardTitle title='Get Version' />
                 <IconButton onClick={this.onClick}>
                   <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
                 </IconButton>
-                <h3 style={{textAlign:'center'}}>Get Version</h3>
                 <CardText style={{textAlign:'center'}} expandable={true}>
                   {this.state.data.map(function(data) {
                     return (
