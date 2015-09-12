@@ -46,14 +46,17 @@ class Auth extends React.Component {
             <div className='col-xs-8'></div>
             <div className='col-xs-8'>
               <Card initiallyExpanded={true}>
-                <h3 style={{textAlign:'center'}}> Get Auth</h3>
                 <IconButton onClick={this.onClick}>
                   <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
                 </IconButton>
-                <CardText expandable={true}>
+                <h3 style={{textAlign:'center'}}>Get Auth</h3>
+                <CardText style={{textAlign: 'center'}} expandable={true}>
                   {this.state.data.map(function(auth) {
                     return (
-                      <h3 style={{textAlign:'center'}}>{auth}</h3>
+                      <div>
+                      AccessKeyID - {auth.accesskey} <br />
+                      SecretAccessKey - {auth.secretaccesskey}
+                      </div>
                     )
                    })}
                 </CardText>

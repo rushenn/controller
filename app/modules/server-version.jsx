@@ -46,14 +46,17 @@ class ServerVersion extends React.Component {
             <div className='col-xs-8'></div>
             <div className='col-xs-8'>
               <Card initiallyExpanded={true}>
-                <h3 style={{textAlign:'center'}}>Get Version</h3>
                 <IconButton onClick={this.onClick}>
                   <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
                 </IconButton>
-                <CardText expandable={true}>
-                  {this.state.data.map(function(version) {
+                <h3 style={{textAlign:'center'}}>Get Version</h3>
+                <CardText style={{textAlign:'center'}} expandable={true}>
+                  {this.state.data.map(function(data) {
                     return (
-                      <h3 style={{textAlign:'center'}}>{version}</h3>
+                      <div>
+                      Version - {data.version} <br />
+                      BuildDate - {data['build-date']}
+                      </div>
                     )
                    })}
                 </CardText>
