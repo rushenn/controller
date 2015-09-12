@@ -9,6 +9,7 @@ var eslint = require('gulp-eslint');
 
 var paths = {
     main: ['app/*.js', 'app/modules/*.jsx'],
+    css: ['app/*.css'],
     lib: ['app/lib/*.js'],
     html: ['app/*.html'],
     gulpfile: ['gulpfile.js']
@@ -29,6 +30,11 @@ gulp.task('main', function() {
             .bundle()
             .pipe(source('main.js'))
             .pipe(gulp.dest('dist'))
+});
+
+gulp.task('css', function() {
+    return gulp.src(paths.css)
+        .pipe(gulp.dest('dist'))
 });
 
 gulp.task('html', function() {
@@ -71,6 +77,6 @@ gulp.task('serve', ['watch'], function() {
     }));
 });
 
-gulp.task('build', ['lib', 'main', 'html', 'lint']);
+gulp.task('build', ['lib', 'main', 'css', 'html', 'lint']);
 
 gulp.task('default', ['build']);
