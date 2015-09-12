@@ -1,22 +1,33 @@
 var superagent = require('superagent-es6-promise');
 
 class jsonrpc extends superagent {
-    constructor(endpoint) {
+    constructor(params) {
         super();
-        this.endpoint = endpoint;
-        this.rpcver = '2.0';
+        for (var key in params) {
+            this[key] = params[key];
+        }
+        this.version = '2.0';
     }
     // call('Auth.Get', {...}, function() {})
-    call(method, params, cb) {
-        if (typeof params === 'function') {
-            cb = params;
-            params = [];
+    call(method, options, cb) {
+        if (!options) {
+            options = {id: 1}
+        }
+        if (!options.id) {
+            options.id = 1;
+        }
+        if (!options.params) {
+            options.params = [];
+        }
+        if (typeof options.params === 'function') {
+            cb = options.params;
+            options.params = [];
         }
         var dataObj = {
-            jsonrpc: this.rpcver,
-            method: method,
-            params: params,
-            id: "1"
+            jsonrpc: this.version,
+            method: this.namespace ? this.namespace + '.' + method : method,
+            params: options.params ? options.params : [],
+            id: options.id
         }
         superagent.post(this.endpoint)
             .set('Content-Type', 'application/json')

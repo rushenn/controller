@@ -9,6 +9,7 @@ injectTapEventPlugin();
 
 import Home from './modules/home';
 import Servers from './modules/servers';
+import ServerVersion from './modules/server-version';
 
 // Get mui Components
 let ThemeManager = new mui.Styles.ThemeManager();
@@ -53,6 +54,7 @@ const AppRoutes = (
   <Route path="/" handler={App}>
     <DefaultRoute handler={Home} />
     <Route path="/servers" handler={Servers} />
+    <Route path="/version" handler={ServerVersion} />
   </Route>
 );
 

@@ -23,6 +23,7 @@ class Home extends React.Component {
             <div className="box">
               <Menu style={{position: 'inherit'}} className = "col-xs-3" onItemTouchTap={this.onItemTouchTap}>
                 <MenuItem primaryText="Servers" route="/servers"/>
+                <MenuItem primaryText="Version" route="/version"/>
                 <MenuItem primaryText="Donut" route="/donut"/>
                 <MenuItem primaryText="Logs" route="/logs"/>
               </Menu>
