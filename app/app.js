@@ -11,6 +11,7 @@ import Home from './modules/home';
 import Auth from './modules/auth';
 import Version from './modules/version';
 import Servers from './modules/servers';
+import ClusterInfo from './modules/info';
 
 // Get mui Components
 let ThemeManager = new mui.Styles.ThemeManager();
@@ -63,6 +64,7 @@ const AppRoutes = (
     <DefaultRoute handler={Home} />
     <Route path='/servers' handler={Servers} />
     <Route path='/version' handler={Version} />
+    <Route path='/info' handler={ClusterInfo} />
     <Route path='/auth' handler={Auth} />
   </Route>
 );
