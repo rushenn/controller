@@ -1,5 +1,6 @@
 import React from 'react';
 import Colors from 'material-ui/lib/styles/colors'
+import Draggable from 'react-draggable'
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -21,12 +22,14 @@ class Home extends React.Component {
         <div className='row center-xs middle-xs' style={{minHeight: window.innerHeight - 50 + 'px', backgroundColor: Colors.grey100}}>
           <div className='col-xs-4'>
             <div className='box'>
-              <Menu desktop={true} style={{position: 'inherit'}} className='col-xs-3' width={320} onItemTouchTap={this.onItemTouchTap}>
-                <MenuItem primaryText='Servers' route='/servers'/>
-                <MenuItem primaryText='Version' route='/version'/>
-                <MenuItem primaryText='ClusterInfo' route='/info'/>
-                <MenuItem primaryText='Auth' route='/auth'/>
-              </Menu>
+              <Draggable axis="both" moveOnStartChange={false}>
+                <Menu desktop={true} style={{position: 'inherit'}} className='col-xs-3' width={320} onItemTouchTap={this.onItemTouchTap}>
+                  <MenuItem primaryText='Servers' route='/servers'/>
+                  <MenuItem primaryText='Version' route='/version'/>
+                  <MenuItem primaryText='ClusterInfo' route='/info'/>
+                  <MenuItem primaryText='Auth' route='/auth'/>
+                </Menu>
+              </Draggable>
             </div>
           </div>
         </div>
