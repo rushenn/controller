@@ -15,3 +15,15 @@
 .servers-appear.servers-appear-active {
     opacity: 1;
 }
+
+.visitors .sparkline {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.graph {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}

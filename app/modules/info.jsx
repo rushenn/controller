@@ -2,10 +2,12 @@ import React from 'react';
 import FontIcon from 'material-ui/lib/font-icon'
 import IconButton from 'material-ui/lib/icon-button'
 import Colors from 'material-ui/lib/styles/colors'
-
 import Card from 'material-ui/lib/card/card'
 
 import PieChart from 'react-d3/piechart/PieChart'
+
+import Graph from './graph'
+import Sparkline from './sparkline'
 
 // TODO enable later
 // import jsonrpc from '../lib/jsonrpc';
@@ -62,6 +64,29 @@ class ClusterInfo extends React.Component {
                           sectorBorderColor="white"
                           title="Pie Chart"
                           hoverAnimation={true}
+                />
+                <Graph className='usage'
+                       width={400}
+                       height={400}
+                       data={[
+                             {'date': '31-May-12',
+                              'close': '582.13'},
+                             {'date': '30-Apr-12',
+                              'close': '583.98'},
+                             {'date': '29-Apr-12',
+                              'close': '603.00'},
+                             {'date': '28-Apr-12',
+                              'close': '607.70'},
+                             {'date': '27-Apr-12',
+                              'close': '552.00'},
+                             {'date': '26-Apr-12',
+                              'close': '391.84'}
+                             ]}
+                />
+                <Sparkline className='visitors'
+                           width={400}
+                           height={200}
+                           data={[85, 66, 71, 10, 5, 16, 71, 1, 16, 24, 54, 85, 37, 36, 43, 67, 63, 23, 96, 53, 25]}
                 />
               </Card>
             </div>
