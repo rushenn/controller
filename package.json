@@ -13,10 +13,12 @@
     "mail": ""
   },
   "dependencies": {
+    "d3": "^3.5.6",
     "material-ui": "^0.11.0",
     "react": "^0.13.3",
-    "react-d3": "^0.4.0",
+    "react-faux-dom": "^1.0.5",
     "react-router": "^0.13.3",
+    "react-d3": "^0.4.0",
     "react-tap-event-plugin": "^0.1.7",
     "superagent-es6-promise": "^1.0.0"
   },
