@@ -3,9 +3,12 @@ import FontIcon from 'material-ui/lib/font-icon'
 import IconButton from 'material-ui/lib/icon-button'
 import TextField from 'material-ui/lib/text-field'
 import RaisedButton from 'material-ui/lib/raised-button'
+
 import List from 'material-ui/lib/lists/list'
 import ListItem from 'material-ui/lib/lists/list-item'
+
 import Colors from 'material-ui/lib/styles/colors'
+import Draggable from 'react-draggable'
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -45,13 +48,15 @@ class Servers extends React.Component {
             </div>
             <div className='col-xs-12'></div>
             <div className='col-xs-6'>
-              <List style={{border:'1px solid black', marginTop:'40px'}}>
-                {this.state.servers.map(function(server, i) {
-                  return (
-                    <ListItem primaryText={server} key={i} />
-                  )
-                 })}
-              </List>
+              <Draggable axis="both" moveOnStartChange={false}>
+                <List style={{border:'1px solid black', marginTop:'40px'}}>
+                  {this.state.servers.map(function(server, i) {
+                    return (
+                      <ListItem primaryText={server} key={i} />
+                    )
+                   })}
+                </List>
+              </Draggable>
             </div>
           </div>
         </div>
