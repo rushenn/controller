@@ -1,3 +1,6 @@
+:focus {outline:none !important;}
+::-moz-focus-inner {border:0 !important;}
+
 * {
     margin: 0; padding: 0;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -7,6 +10,15 @@
     padding: 20px;
 }
 
+.home-appear {
+    opacity: 0.01;
+    transition: opacity .3s ease-in;
+}
+
+.home-appear.home-appear-active {
+    opacity: 1;
+}
+
 .servers-appear {
     opacity: 0.01;
     transition: opacity .3s ease-in;
@@ -14,6 +26,15 @@
 
 .servers-appear.servers-appear-active {
     opacity: 1;
+}
+
+.servers-leave {
+    opacity: 1;
+}
+
+.servers-leave.servers-leave-active {
+    opacity: 0.01;
+    transition: opacity .3s ease-in;
 }
 
 .visitors .sparkline {
@@ -26,4 +47,46 @@
     fill: none;
     stroke: steelblue;
     stroke-width: 1.5px;
+}
+
+.card {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+
+.card:hover {
+    -webkit-transition: 1s;
+    transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background-color: red;
+}
+
+.index-card {
+    font-family: 'Roboto';
+    color: #555;
+}
+
+.index-card, .index-card .card {
+    height: 180px;
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    transform-origin: right 50% 0px;
+    transform: scaleX(1);
+    touch-action: none;
+    border-radius: 2px;
+    z-index: 10;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 2px -2px, 0 2px 2px -2px, 0 2px 2px -2px, 0 2px 2px -2px inset;
+}
+
+.index-card h6 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 50px;
+    text-align: center;
 }
