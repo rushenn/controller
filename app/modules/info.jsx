@@ -34,11 +34,6 @@ class ClusterInfo extends React.Component {
 //      }
 //      this.setState({state: data})
     //    })
-    this.setState({state: [
-      {label: 'Server1 Disk Usage', value: 20.0},
-      {label: 'Server2 Disk Usage', value: 55.0},
-      {label: 'Server3 Disk Usage', value: 25.0}
-    ]});
   }
   onClickIcon() {
     this.context.router.transitionTo('/');

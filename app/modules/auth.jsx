@@ -21,7 +21,10 @@ class Auth extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
     this.state = {
-      data: []
+      data: [{
+      'accesskey':'HZ75FITE8IPCOO3KN5L5',
+      'secretaccesskey':'5cZ3szv/gP7yJN1Sw9Wm1x7dLYs7aLq0XuCF5tnP'
+    }]
     }
   }
   onClick() {
@@ -31,10 +34,6 @@ class Auth extends React.Component {
 //      }
 //      this.setState({state: data})
 //    })
-    this.setState({state: this.state.data.push({
-      'accesskey':'HZ75FITE8IPCOO3KN5L5',
-      'secretaccesskey':'5cZ3szv/gP7yJN1Sw9Wm1x7dLYs7aLq0XuCF5tnP'
-    })})
   }
   onClickIcon() {
     this.context.router.transitionTo('/');
@@ -51,10 +50,7 @@ class Auth extends React.Component {
             <div className='col-xs-8'>
               <Draggable axis="both" moveOnStartChange={false}>
                 <Card initiallyExpanded={true}>
-                  <CardTitle title='Get Auth' />
-                  <IconButton onClick={this.onClick}>
-                    <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
-                  </IconButton>
+                  <CardTitle title='Authorization Credentials' />
                   <CardText style={{textAlign: 'center'}} expandable={true}>
                     {this.state.data.map(function(auth) {
                       return (
