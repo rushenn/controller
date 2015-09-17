@@ -17,7 +17,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-class Card extends React.Component {
+class ClickCard extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -37,11 +37,11 @@ class Card extends React.Component {
   }
 }
 
-Card.propTypes = {
+ClickCard.propTypes = {
   title: React.PropTypes.string,
   className: React.PropTypes.string,
   route: React.PropTypes.string.isRequired,
   onTouch: React.PropTypes.func.isRequired
 }
 
-export default Card
+export default ClickCard
