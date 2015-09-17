@@ -2,35 +2,49 @@ import React from 'react';
 import Colors from 'material-ui/lib/styles/colors'
 import Draggable from 'react-draggable'
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+import Card from './card';
 
-let Menu = require('material-ui/lib/menus/menu');
-let MenuItem = require('material-ui/lib/menus/menu-item');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.onItemTouchTap = this.onItemTouchTap.bind(this);
   }
-  onItemTouchTap(e, item) {
-    e.preventDefault();
-    this.context.router.transitionTo(item.props.route);
+  onItemTouchTap(route) {
+    this.context.router.transitionTo(route);
   }
   render() {
     return (
-      <ReactCSSTransitionGroup transitionName='home' transitionAppear={false} transitionLeave={false}>
-        <div className='row center-xs middle-xs' style={{minHeight: window.innerHeight - 50 + 'px', backgroundColor: Colors.grey100}}>
-          <div className='col-xs-4'>
-            <div className='box'>
-              <Draggable axis="both" moveOnStartChange={false}>
-                <Menu desktop={true} style={{position: 'inherit'}} className='col-xs-3' width={320} onItemTouchTap={this.onItemTouchTap}>
-                  <MenuItem primaryText='Servers' route='/servers'/>
-                  <MenuItem primaryText='Version' route='/version'/>
-                  <MenuItem primaryText='ClusterInfo' route='/info'/>
-                  <MenuItem primaryText='Auth' route='/auth'/>
-                </Menu>
-              </Draggable>
-            </div>
+      <ReactCSSTransitionGroup transitionName='home'>
+        <div className='row middle-xs' style={{minHeight: window.innerHeight - 20 + 'px', backgroundColor: Colors.grey100}}>
+          <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
+            <Draggable axis="both" moveOnStartChange={false}>
+              <div>
+                <Card className='index-card' title='Version' route='/version' onTouch={this.onItemTouchTap}/>
+              </div>
+            </Draggable>
+          </div>
+          <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
+            <Draggable axis="both" moveOnStartChange={false}>
+              <div>
+                <Card className='index-card' title='Servers' route='/servers' onTouch={this.onItemTouchTap}/>
+              </div>
+            </Draggable>
+          </div>
+          <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
+            <Draggable axis="both" moveOnStartChange={false}>
+              <div>
+                <Card className='index-card' title='ClusterInfo' route='/info' onTouch={this.onItemTouchTap}/>
+              </div>
+            </Draggable>
+          </div>
+          <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
+            <Draggable axis="both" moveOnStartChange={false}>
+              <div>
+                <Card className='index-card' title='Auth' route='/auth' onTouch={this.onItemTouchTap}/>
+              </div>
+            </Draggable>
           </div>
         </div>
       </ReactCSSTransitionGroup>
