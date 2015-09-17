@@ -21,7 +21,10 @@ class Version extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
     this.state = {
-      data: []
+      data: [{
+      'version':'0.0.1',
+      'build-date':'Sat, 12 Sep 2015 05:13:02 GMT'
+    }]
     }
   }
   onClick() {
@@ -31,10 +34,6 @@ class Version extends React.Component {
 //      }
 //      this.setState({state: data})
 //    })
-    this.setState({state: this.state.data.push({
-      'version':'0.0.1',
-      'build-date':'Sat, 12 Sep 2015 05:13:02 GMT'
-    })})
   }
   onClickIcon() {
     this.context.router.transitionTo('/');
@@ -51,10 +50,7 @@ class Version extends React.Component {
             <div className='col-xs-8'>
               <Draggable axis="both" moveOnStartChange={false}>
                 <Card initiallyExpanded={true}>
-                  <CardTitle title='Get Version' />
-                  <IconButton onClick={this.onClick}>
-                    <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>play_arrow</FontIcon>
-                  </IconButton>
+                  <CardTitle title='Version' />
                   <CardText style={{textAlign:'center'}} expandable={true}>
                     {this.state.data.map(function(data) {
                       return (
