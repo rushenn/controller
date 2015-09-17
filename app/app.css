@@ -63,11 +63,12 @@
             transition: 1s;
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
-    background-color: red;
+
+    background-color: #ff5252;
+    color: white; 
 }
 
 .index-card {
-    font-family: 'Roboto';
     color: #555;
 }
 
@@ -85,6 +86,17 @@
     -webkit-box-shadow: 2px 3px 2px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 2px 3px 2px 0px rgba(0,0,0,0.1);
     box-shadow: 2px 3px 2px 0px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-top: 15px;
+    color: #555;
+}
+
+.header h2 {
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .index-card h6 {

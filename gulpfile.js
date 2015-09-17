@@ -35,7 +35,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('main', function() {
-    return browserify({entries: './app/app.js', extensions: ['.jsx']}).transform(babelify)
+    return browserify({entries: './app/app.jsx', extensions: ['.jsx']}).transform(babelify)
             .bundle()
             .pipe(source('main.js'))
             .pipe(gulp.dest('dist'))
