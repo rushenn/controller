@@ -39,9 +39,9 @@ class App extends React.Component {
     return (
       <div>
         <AppBar title='Minio Controller'
-                showMenuIconButton={true}
+                showMenuIconButton={false}
                 style={{marginBottom:'4px'}}
-                zDepth={0}
+                zDepth={1}
         />
         <div style={{width:'1024px', margin:'auto', minHeight:window.innerHeight - 64 + 'px'}} >
           <RouteHandler />
