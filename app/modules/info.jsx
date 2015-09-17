@@ -20,14 +20,14 @@ import IconButton from 'material-ui/lib/icon-button'
 import Colors from 'material-ui/lib/styles/colors'
 import Card from 'material-ui/lib/card/card'
 
-import PieChart from 'react-d3/piechart/PieChart'
-import Sparkline from './sparkline'
+import ReactD3 from 'react-d3-components'
 
 // TODO enable later
 // import jsonrpc from '../lib/jsonrpc';
 // let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'ClusterInfo'});
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+let PieChart = ReactD3.PieChart;
 
 class ClusterInfo extends React.Component {
   constructor(props) {
@@ -35,11 +35,14 @@ class ClusterInfo extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
     this.state = {
-      data: [
-        {label: 'Server1 Disk Usage', value: 20.0},
-        {label: 'Server2 Disk Usage', value: 55.0},
-        {label: 'Server3 Disk Usage', value: 25.0}
-      ]
+      data: {
+        label: 'diskUsage',
+        values: [
+          {x: 'Disk Usage 1', y: 20.0},
+          {x: 'Disk Usage 2', y: 55.0},
+          {x: 'Disk Usage 3', y: 25.0}
+        ]
+      }
     }
   }
   onClick() {
@@ -66,18 +69,9 @@ class ClusterInfo extends React.Component {
               <Card initiallyExpanded={true}>
                 <div></div>
                 <PieChart data={this.state.data}
-                          width={400}
+                          width={600}
                           height={400}
-                          radius={100}
-                          innerRadius={20}
-                          sectorBorderColor="white"
-                          title="Pie Chart"
-                          hoverAnimation={true}
-                />
-                <Sparkline className='visitors'
-                           width={400}
-                           height={200}
-                           data={[85, 66, 71, 10, 5, 16, 71, 1, 16, 24, 54, 85, 37, 36, 43, 67, 63, 23, 96, 53, 25]}
+                          sort={null}
                 />
               </Card>
             </div>

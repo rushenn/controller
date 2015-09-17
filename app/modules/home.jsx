@@ -18,7 +18,7 @@ import React from 'react';
 import Colors from 'material-ui/lib/styles/colors'
 import Draggable from 'react-draggable'
 
-import Card from './card';
+import ClickCard from './clickable-card';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -37,28 +37,28 @@ class Home extends React.Component {
           <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
             <Draggable axis="both" moveOnStartChange={false}>
               <div>
-                <Card className='index-card' title='Version' route='/version' onTouch={this.onItemTouchTap}/>
+                <ClickCard className='index-card' title='Version' route='/version' onTouch={this.onItemTouchTap}/>
               </div>
             </Draggable>
           </div>
           <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
             <Draggable axis="both" moveOnStartChange={false}>
               <div>
-                <Card className='index-card' title='Servers' route='/servers' onTouch={this.onItemTouchTap}/>
+                <ClickCard className='index-card' title='Servers' route='/servers' onTouch={this.onItemTouchTap}/>
               </div>
             </Draggable>
           </div>
           <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
             <Draggable axis="both" moveOnStartChange={false}>
               <div>
-                <Card className='index-card' title='ClusterInfo' route='/info' onTouch={this.onItemTouchTap}/>
+                <ClickCard className='index-card' title='ClusterInfo' route='/info' onTouch={this.onItemTouchTap}/>
               </div>
             </Draggable>
           </div>
           <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
             <Draggable axis="both" moveOnStartChange={false}>
               <div>
-                <Card className='index-card' title='Auth' route='/auth' onTouch={this.onItemTouchTap}/>
+                <ClickCard className='index-card' title='Auth' route='/auth' onTouch={this.onItemTouchTap}/>
               </div>
             </Draggable>
           </div>
