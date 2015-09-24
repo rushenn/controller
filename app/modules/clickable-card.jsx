@@ -20,9 +20,9 @@ import classnames from 'classnames'
 class ClickCard extends React.Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
+    this.onDoubleClick = this.onDoubleClick.bind(this);
   }
-  onClick() {
+  onDoubleClick() {
     this.props.onTouch(this.props.route)
   }
   getClassName() {
@@ -30,7 +30,7 @@ class ClickCard extends React.Component {
   }
   render() {
     return (
-      <div className={this.getClassName()} onClick={this.onClick}>
+      <div className={this.getClassName()} onDoubleClick={this.onDoubleClick}>
         <h6> {this.props.title} </h6>
       </div>
     )
