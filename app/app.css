@@ -58,7 +58,7 @@
 }
 
 .card:hover {
-    cursor: pointer;
+    cursor: move;
     -webkit-transition: 1s;
             transition: 1s;
     -webkit-transform-style: preserve-3d;

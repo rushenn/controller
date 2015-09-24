@@ -1,44 +1,87 @@
-var superagent = require('superagent-es6-promise');
+/*
+ * Isomorphic Javascript library for Minio Controller API, (C) 2015 Minio, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-class JsonRPC extends superagent {
-    // new JsonRPC({endpoint: '...', namespace: '...'})
-    constructor(params) {
-        super(params);
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _superagentEs6Promise = require('superagent-es6-promise');
+
+var _superagentEs6Promise2 = _interopRequireDefault(_superagentEs6Promise);
+
+var JSONrpc = (function (_SuperAgent) {
+    _inherits(JSONrpc, _SuperAgent);
+
+    // new JSONrpc({endpoint: '...', namespace: '...'})
+
+    function JSONrpc(params) {
+        _classCallCheck(this, JSONrpc);
+
+        _get(Object.getPrototypeOf(JSONrpc.prototype), 'constructor', this).call(this, params);
         for (var key in params) {
             this[key] = params[key];
         }
         this.version = '2.0';
     }
-    // call('Get', {id: NN, params: [...]}, function() {})
-    call(method, options, cb) {
-        if (!options) {
-            options = {id: 1}
-        }
-        if (!options.id) {
-            options.id = 1;
-        }
-        if (!options.params) {
-            options.params = [];
-        }
-        if (typeof options.params === 'function') {
-            cb = options.params;
-            options.params = [];
-        }
-        var dataObj = {
-            id: options.id,
-            jsonrpc: this.version,
-            params: options.params ? options.params : [],
-            method: this.namespace ? this.namespace + '.' + method : method
-        }
-        superagent.post(this.endpoint)
-            .set('Content-Type', 'application/json')
-            .send(JSON.stringify(dataObj))
-            .end(function(err, data) {
-                if (err)
-                    return cb(err);
-                cb(null, data);
-            })
-    }
-}
 
-export default JsonRPC;
+    // call('Get', {id: NN, params: [...]}, function() {})
+
+    _createClass(JSONrpc, [{
+        key: 'call',
+        value: function call(method, options) {
+            if (!options) {
+                options = {};
+            }
+            if (!options.id) {
+                options.id = 1;
+            }
+            if (!options.params) {
+                options.params = [];
+            }
+            var dataObj = {
+                id: options.id,
+                jsonrpc: this.version,
+                params: options.params ? options.params : [],
+                method: this.namespace ? this.namespace + '.' + method : method
+            };
+            return _superagentEs6Promise2['default'].post(this.endpoint).set('Content-Type', 'application/json').send(JSON.stringify(dataObj)).then(function (res) {
+                if (!res.text) throw new Error("res.text not set in the response");
+                return JSON.parse(res.text).result;
+            }, function (error) {
+                if (error.res && error.res.text) throw JSON.parse(error.res.text).error;
+                throw error;
+            });
+        }
+    }]);
+
+    return JSONrpc;
+})(_superagentEs6Promise2['default']);
+
+exports['default'] = JSONrpc;
+module.exports = exports['default'];
+//# sourceMappingURL=jsonrpc.js.map
