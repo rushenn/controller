@@ -61,24 +61,26 @@ class Version extends React.Component {
           <IconButton style={{position:'absolute', right:'0', top:'0'}} onClick={this.onClickIcon}>
             <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>home</FontIcon>
           </IconButton>
-          <div className='row center-xs'>
-            <div className='col-xs-8'></div>
-            <div className='col-xs-8'>
-              <Draggable axis="both" moveOnStartChange={false}>
-                <Card initiallyExpanded={true}>
-                  <CardTitle title='Version' />
-                  <CardText style={{textAlign:'center'}} expandable={true}>
-                    {this.state.data.map(function(data) {
-                      return (
-                        <div>
-                        Version - {data.version} <br />
-                        BuildDate - {data['build-date']}
-                        </div>
-                      )
-                     })}
-                  </CardText>
-                </Card>
-              </Draggable>
+          <div className='container-fluid'>
+            <div className='row center-xs'>
+              <div className='col-xs-8'></div>
+              <div className='col-xs-8'>
+                <Draggable axis="both" moveOnStartChange={false}>
+                  <Card initiallyExpanded={true}>
+                    <CardTitle title='Version' />
+                    <CardText style={{textAlign:'center'}} expandable={true}>
+                      {this.state.data.map(function(data) {
+                        return (
+                          <div>
+                          Version - {data.version} <br />
+                          BuildDate - {data['build-date']}
+                          </div>
+                        )
+                       })}
+                    </CardText>
+                  </Card>
+                </Draggable>
+              </div>
             </div>
           </div>
         </div>

@@ -55,24 +55,26 @@ class Servers extends React.Component {
           <IconButton style={{position:'absolute', right:'0', top:'0'}} onClick={this.onClick}>
             <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>home</FontIcon>
           </IconButton>
-          <div className='row center-xs'>
-            <div className='col-xs-6'>
-              <form onSubmit={this.onsubmit}>
-                <TextField ref='newserver' type='text' />
-                <RaisedButton label='Add' type='submit' />
-              </form>
-            </div>
-            <div className='col-xs-12'></div>
-            <div className='col-xs-6'>
-              <Draggable axis="both" moveOnStartChange={false}>
-                <List style={{border:'1px solid black', marginTop:'40px'}}>
-                  {this.state.servers.map(function(server, i) {
-                    return (
-                      <ListItem primaryText={server} key={i} />
-                    )
-                   })}
-                </List>
-              </Draggable>
+          <div className='container-fluid'>
+            <div className='row center-xs'>
+              <div className='col-xs-6'>
+                <form onSubmit={this.onsubmit}>
+                  <TextField ref='newserver' type='text' />
+                  <RaisedButton label='Add' type='submit' />
+                </form>
+              </div>
+              <div className='col-xs-12'></div>
+              <div className='col-xs-6'>
+                <Draggable axis="both" moveOnStartChange={false}>
+                  <List style={{border:'1px solid black', marginTop:'40px'}}>
+                    {this.state.servers.map(function(server, i) {
+                      return (
+                        <ListItem primaryText={server} key={i} />
+                      )
+                     })}
+                  </List>
+                </Draggable>
+              </div>
             </div>
           </div>
         </div>
