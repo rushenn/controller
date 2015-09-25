@@ -33,7 +33,7 @@ class Home extends React.Component {
   render() {
     return (
       <ReactCSSTransitionGroup transitionName='home'>
-        <div className='container-fluid'>
+        <div className='container-fluid' style={{width: 1170 + 'px'}}>
           <div className='row middle-xs' style={{minHeight: window.innerHeight - 20 + 'px', backgroundColor: Colors.grey100}}>
             <div className='col-xs-6 col-sm-5 col-md-4 col-lg-3'>
               <Draggable axis="both" moveOnStartChange={false}>
