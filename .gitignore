@@ -8,3 +8,4 @@ assets.go
 *~
 ncp-debug.log
 npm-debug.log
+*_assetfs.go
