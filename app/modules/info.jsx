@@ -63,7 +63,7 @@ class ClusterInfo extends React.Component {
           <IconButton style={{position:'absolute', right:'0', top:'0'}} onClick={this.onClickIcon}>
             <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>home</FontIcon>
           </IconButton>
-          <div className='container-fluid'>
+          <div className='container-fluid' style={{width: 1170 + 'px'}}>
             <div className='row center-xs'>
               <div className='col-xs-8'></div>
               <div className='col-xs-8'>
