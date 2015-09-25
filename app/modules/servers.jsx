@@ -32,12 +32,12 @@ class Servers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      servers:['one', 'two', 'three']
+      servers: ['one', 'two', 'three']
     }
     this.onClick = this.onClick.bind(this);
-    this.onsubmit = this.onsubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  onsubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
     if (!this.refs.newserver.getValue())
       return;
@@ -58,9 +58,9 @@ class Servers extends React.Component {
           <div className='container-fluid' style={{width: 1170 + 'px'}}>
             <div className='row center-xs'>
               <div className='col-xs-6'>
-                <form onSubmit={this.onsubmit}>
+                <form onSubmit={this.onSubmit}>
                   <TextField ref='newserver' type='text' />
-                  <RaisedButton label='Add' type='submit' />
+                  <RaisedButton label='Add Server' type='submit' />
                 </form>
               </div>
               <div className='col-xs-12'></div>

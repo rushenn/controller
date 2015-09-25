@@ -23,11 +23,10 @@ var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
 
 var paths = {
-    main: ['app/*.js', 'app/modules/*.jsx'],
-    css: ['app/*.css'],
-    lib: ['app/lib/*.js'],
-    html: ['app/*.html'],
-    gulpfile: ['gulpfile.js']
+  main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
+  css: ['app/*.css'],
+  html: ['app/*.html'],
+  gulpfile: ['gulpfile.js']
 }
 
 gulp.task('clean', function() {
@@ -70,7 +69,6 @@ gulp.task('lint', function () {
 
 gulp.task('watch', function() {
     gulp.watch(paths.main, ['main']);
-    gulp.watch(paths.lib, ['lib']);
     gulp.watch(paths.html, ['html']);
 });
 
