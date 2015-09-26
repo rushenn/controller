@@ -58,12 +58,12 @@ export default class Controller {
     return this.makeCall("DiscoverServers", args)
   }
   GetControllerNetInfo() {
-        return this.makeCall("GetControllerNetInfo")
+    return this.makeCall("GetControllerNetInfo")
   }
-  StorageStats() {
-    return this.makeCall("StorageStats")
+  StorageStats(host) {
+    return this.makeCall("StorageStats", host)
   }
-  RebalanceStats() {
-    return this.makeCall("RebalaceStats")
+  RebalanceStats(host) {
+    return this.makeCall("RebalaceStats", host)
   }
 }

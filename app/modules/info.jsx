@@ -40,7 +40,7 @@ class ClusterInfo extends React.Component {
   }
   componentWillMount() {
     let _this = this;
-    Controller.StorageStats()
+    Controller.StorageStats('localhost')
               .then(function (data) {
                 data.bucketStats.map(function (bucket) {
                   _this.setState({state: _this.state.data.values.push({x: bucket.name, y: bucket.used})})

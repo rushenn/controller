@@ -18,7 +18,7 @@ import React from 'react';
 import Colors from 'material-ui/lib/styles/colors'
 import Draggable from 'react-draggable'
 
-import ClickCard from './clickable-card';
+import ClickCard from './clickcard';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
