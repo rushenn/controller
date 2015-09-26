@@ -35,11 +35,7 @@ class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [{
-        'name': 'testuser',
-        'accessKeyId':'HZ75FITE8IPCOO3KN5L5',
-        'secretAccessKey':'5cZ3szv/gP7yJN1Sw9Wm1x7dLYs7aLq0XuCF5tnP'
-      }]
+      data: []
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
@@ -48,23 +44,23 @@ class Auth extends React.Component {
     e.preventDefault();
     if (!this.refs.newuser.getValue())
       return;
-
     let _this = this;
-    Controller.GenerateAuth(this.refs.newuser.getValue())
-              .then(function(data) {
-                let newData = {
-                  'name': '',
-                  'accessKeyId': '',
-                  'secretAccessKey': ''
-                };
-                newData.name = data.name;
-                newData.accessKeyId = data.accessKeyId;
-                newData.secretAccessKey = data.secretAccessKey;
-                _this.setState({state: _this.state.data.push(newData)});
-                return;
-              }).catch(function(error) {
-                throw new Error(error);
-              });
+    Controller.GenerateAuth(
+      this.refs.newuser.getValue()
+    ).then(function(data) {
+      let newData = {
+        'name': '',
+        'accessKeyId': '',
+        'secretAccessKey': ''
+      };
+      newData.name = data.name;
+      newData.accessKeyId = data.accessKeyId;
+      newData.secretAccessKey = data.secretAccessKey;
+      _this.setState({state: _this.state.data.push(newData)});
+      return;
+    }).catch(function(error) {
+      throw new Error(error);
+    });
     this.refs.newuser.setValue('')
   }
   onClickIcon() {
