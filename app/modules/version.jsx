@@ -22,34 +22,29 @@ import Colors from 'material-ui/lib/styles/colors'
 import Card from 'material-ui/lib/card/card'
 import CardText from 'material-ui/lib/card/card-text'
 import CardTitle from 'material-ui/lib/card/card-title'
+import Ctrl from '../lib/controller'
 
 import Draggable from 'react-draggable'
 
-// TODO enable later
-// import jsonrpc from '../lib/jsonrpc';
-// let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'Version'});
-
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+let Controller = new Ctrl("/rpc");
 
 class Version extends React.Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
     this.state = {
-      data: [{
-      'version':'0.0.1',
-      'build-date':'Sat, 12 Sep 2015 05:13:02 GMT'
-    }]
+      data: []
     }
   }
-  onClick() {
-//    jsonRPC.call('Get', function (error, data) {
-//      if (error) {
-//        throw new Error(error)
-//      }
-//      this.setState({state: data})
-//    })
+  componentWillMount() {
+    let _this = this;
+    Controller.GetVersion()
+              .then(function (data) {
+                _this.setState({state: _this.state.data.push(data)})
+              }).catch(function (error) {
+                throw new Error(error);
+              });
   }
   onClickIcon() {
     this.context.router.transitionTo('/');
@@ -73,7 +68,9 @@ class Version extends React.Component {
                         return (
                           <div>
                           Version - {data.version} <br />
-                          BuildDate - {data['build-date']}
+                          BuildDate - {data.buildDate} <br />
+                          Architecture - {data.arch} <br />
+                          Operating System - {data.os}
                           </div>
                         )
                        })}
