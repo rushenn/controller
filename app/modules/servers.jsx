@@ -25,26 +25,43 @@ import ListItem from 'material-ui/lib/lists/list-item'
 
 import Colors from 'material-ui/lib/styles/colors'
 import Draggable from 'react-draggable'
+import Ctrl from '../lib/controller'
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+let Controller = new Ctrl("/rpc");
 
 class Servers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      servers: ['one', 'two', 'three']
+      servers: []
     }
-    this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onClickIcon = this.onClickIcon.bind(this);
   }
   onSubmit(e) {
     e.preventDefault();
     if (!this.refs.newserver.getValue())
       return;
-    this.setState({state: this.state.servers.push(this.refs.newserver.getValue())});
+    let _this = this;
+    Controller.AddServer({
+      'id': '6F27CB16-493D-40FA-B035-2A2E5646066A',
+      'host': this.refs.newserver.getValue()
+    }).then(function(data) {
+      let newData = {
+        'host': '',
+        'id': ''
+      }
+      newData.id = data.id;
+      newData.host = data.host;
+      _this.setState({state: _this.state.servers.push(data)});
+      return;
+    }).catch(function(error) {
+      throw new Error(error);
+    });
     this.refs.newserver.setValue('')
   }
-  onClick() {
+  onClickIcon() {
     this.context.router.transitionTo('/');
   }
   render() {
@@ -52,7 +69,7 @@ class Servers extends React.Component {
       <ReactCSSTransitionGroup transitionName='servers' transitionAppear={true} transitionLeave={true}>
         <div style={{position:'relative', backgroundColor: 'white', minHeight:window.innerHeight - 60 + 'px', padding: '30px'}}>
           <h2 style={{textAlign:'center'}}>Servers</h2>
-          <IconButton style={{position:'absolute', right:'0', top:'0'}} onClick={this.onClick}>
+          <IconButton style={{position:'absolute', right:'0', top:'0'}} onClick={this.onClickIcon}>
             <FontIcon className='material-icons' color={Colors.blue500} hoverColor={Colors.red500}>home</FontIcon>
           </IconButton>
           <div className='container-fluid' style={{width: 1170 + 'px'}}>
@@ -69,7 +86,7 @@ class Servers extends React.Component {
                   <List style={{border:'1px solid black', marginTop:'40px'}}>
                     {this.state.servers.map(function(server, i) {
                       return (
-                        <ListItem primaryText={server} key={i} />
+                        <ListItem primaryText={server.host} key={i} />
                       )
                      })}
                   </List>
