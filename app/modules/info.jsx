@@ -19,39 +19,35 @@ import FontIcon from 'material-ui/lib/font-icon'
 import IconButton from 'material-ui/lib/icon-button'
 import Colors from 'material-ui/lib/styles/colors'
 import Card from 'material-ui/lib/card/card'
+import Ctrl from '../lib/controller'
 
 import ReactD3 from 'react-d3-components'
 
-// TODO enable later
-// import jsonrpc from '../lib/jsonrpc';
-// let jsonRPC = new jsonrpc({endpoint:'/rpc', namespace: 'ClusterInfo'});
-
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 let PieChart = ReactD3.PieChart;
+let Controller = new Ctrl("/rpc");
 
 class ClusterInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
     this.onClickIcon = this.onClickIcon.bind(this);
     this.state = {
       data: {
         label: 'diskUsage',
-        values: [
-          {x: 'Disk Usage 1', y: 20.0},
-          {x: 'Disk Usage 2', y: 55.0},
-          {x: 'Disk Usage 3', y: 25.0}
-        ]
+        values: []
       }
     }
   }
-  onClick() {
-//    jsonRPC.call('Get', function (error, data) {
-//      if (error) {
-//        throw new Error(error)
-//      }
-//      this.setState({state: data})
-    //    })
+  componentWillMount() {
+    let _this = this;
+    Controller.StorageStats()
+              .then(function (data) {
+                data.bucketStats.map(function (bucket) {
+                  _this.setState({state: _this.state.data.values.push({x: bucket.name, y: bucket.used})})
+                })
+              }).catch(function (error) {
+                throw new Error(error);
+              });
   }
   onClickIcon() {
     this.context.router.transitionTo('/');
