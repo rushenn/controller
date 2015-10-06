@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+    <!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Material Admin</title>
+    
+        <!-- Vendor CSS -->
+        <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        
+            
+        <!-- CSS -->
+        <link href="css/app.min.1.css" rel="stylesheet">
+        <link href="css/app.min.2.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <header id="header">
+            <ul class="header-inner">
+                <li id="menu-trigger" data-trigger="#sidebar">
+                    <div class="line-wrap">
+                        <div class="line top"></div>
+                        <div class="line center"></div>
+                        <div class="line bottom"></div>
+                    </div>
+                </li>
+            
+                <li class="logo hidden-xs">
+                    <a href="index.html">Material Admin</a>
+                </li>
+                
+                <li class="pull-right">
+                <ul class="top-menu">
+                    <li id="top-search">
+                        <a class="tm-search" href=""></a>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-message" href=""><i class="tmn-counts">6</i></a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="listview">
+                                <div class="lv-header">
+                                    Messages
+                                </div>
+                                <div class="lv-body">
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">David Belle</div>
+                                                <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a class="lv-footer" href="">View All</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-notification" href=""><i class="tmn-counts">9</i></a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="listview" id="notifications">
+                                <div class="lv-header">
+                                    Notification
+                    
+                                    <ul class="actions">
+                                        <li class="dropdown">
+                                            <a href="" data-clear="notification">
+                                                <i class="zmdi zmdi-check-all"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="lv-body">
+                                    <a class="lv-item" href="">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lv-title">David Belle</div>
+                                                <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                    
+                                <a class="lv-footer" href="">View Previous</a>
+                            </div>
+                    
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-settings" href=""></a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                            <li class="hidden-xs">
+                                <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-settings"></i> Other Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                </li>
+            </ul>
+            
+            <!-- Top Search Content -->
+            <div id="top-search-wrap">
+                <input type="text">
+                <i id="top-search-close">&times;</i>
+            </div>
+        </header>
+        
+        <section id="main">
+            <aside id="sidebar">
+                <div class="sidebar-inner c-overflow">
+                    <div class="profile-menu">
+                        <a href="">
+                            <div class="profile-pic">
+                                <img src="img/profile-pics/1.jpg" alt="">
+                            </div>
+
+                            <div class="profile-info">
+                                Malinda Hollaway
+
+                                <i class="zmdi zmdi-arrow-drop-down"></i>
+                            </div>
+                        </a>
+
+                        <ul class="main-menu">
+                            <li>
+                                <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="main-menu">
+                        <li><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                        <li><a href="typography.html"><i class="zmdi zmdi zmdi-format-underlined"></i> Typography</a></li>
+                        <li><a href="tables.html"><i class="zmdi zmdi-view-list"></i> Tables</a></li>
+                        <li class="sub-menu active toggled">
+                            <a href=""><i class="zmdi zmdi-collection-text"></i> Forms</a>
+
+                            <ul>
+                                <li><a href="form-elements.html">Basic Form Elements</a></li>
+                                <li><a href="form-components.html">Form Components</a></li>
+                                <li><a class="active" href="form-validations.html">Form Validation</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href=""><i class="zmdi zmdi-swap-alt"></i>User Interface</a>
+                            <ul>
+                                <li><a href="buttons.html">Buttons</a></li>
+                                <li><a href="icons.html">Icons</a></li>
+                                <li><a href="alerts.html">Alerts</a></li>
+                                <li><a href="components.html">Components</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href=""><i class="zmdi zmdi-collection-item"></i> Sample Pages</a>
+                            <ul>
+                                
+                                <li><a href="list-view.html">List View</a></li>
+                                <li><a href="login.html">Login and Sign Up</a></li>
+                                <li><a href="lockscreen.html">Lockscreen</a></li>
+                                <li><a href="404.html">Error 404</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        
+        
+            <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>Form Validations</h2>
+                    
+                        <ul class="actions">
+                            <li>
+                                <a href="">
+                                    <i class="zmdi zmdi-trending-up"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="zmdi zmdi-check-all"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="" data-toggle="dropdown">
+                                    <i class="zmdi zmdi-more-vert"></i>
+                                </a>
+                    
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="">Refresh</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Manage Widgets</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Widgets Settings</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Basic Example <small>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add .has-warning, .has-error, or .has-success to the parent element. Any .control-label, .form-control, and .help-block within that element will receive the validation styles.</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <div class="form-group has-success">
+                                <div class="fg-line">
+                                    <label class="control-label" for="inputSuccess1">Input with success</label>
+                                    <input type="text" class="form-control" id="inputSuccess1" value="Vestibulum ante ipsum primis in faucibus orci luctus">
+                                </div>  
+                                <small class="help-block">This is a successfull help block</small>
+                            </div>
+                            
+                            <div class="form-group has-warning">
+                                <div class="fg-line">
+                                    <label class="control-label" for="inputWarning1">Input with warning</label>
+                                    <input type="text" class="form-control" id="inputWarning1" value="Duis at suscipit nibh. Sed nec libero non">
+                                </div>
+                                <small class="help-block">This is a warning help block</small>
+                            </div>
+                            
+                            <div class="form-group has-error">
+                                <div class="fg-line">
+                                    <label class="control-label" for="inputError1">Input with error</label>
+                                    <input type="text" class="form-control" id="inputError1" value="Nam et eleifend massa. Cum sociis natoque penatibus">
+                                </div>
+                                <small class="help-block">This is an error help block</small>
+                            </div>
+                            
+                            <br/>
+                            
+                            <div class="has-success">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <i class="input-helper"></i>
+                                        Checkbox with success
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="has-warning">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <i class="input-helper"></i>
+                                        Checkbox with warning
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="has-error">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <i class="input-helper"></i>
+                                        Checkbox with error
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Validation Stats with Icon <small>You can also add optional feedback icons with the addition of .has-feedback and the right icon.</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="inputWarning2">Input with warning</label>
+                                <div class="fg-line">
+                                    <input type="text" class="form-control" id="inputWarning2">
+                                </div>
+                                <span class="zmdi zmdi-alert-triangle form-control-feedback"></span>
+                            </div>
+                            
+                            <div class="form-group has-success has-feedback">
+                                <label class="control-label" for="inputSuccess2">Input with success</label>
+                                <div class="fg-line">
+                                    <input type="text" class="form-control" id="inputSuccess2">
+                                </div>
+                                <span class="zmdi zmdi-check form-control-feedback"></span>
+                            </div>
+                            
+                            <div class="form-group has-error has-feedback">
+                                <label class="control-label" for="inputError2">Input with error</label>
+                                <div class="fg-line">
+                                    <input type="text" class="form-control" id="inputError2">
+                                </div>
+                                <span class="zmdi zmdi-close form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+        <footer id="footer">
+            Copyright &copy; 2015 Material Admin
+            
+            <ul class="f-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">Reports</a></li>
+                <li><a href="">Support</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </footer>
+        
+        <!-- Older IE warning message -->
+        <!--[if lt IE 9]>
+            <div class="ie-warning">
+                <h1 class="c-white">Warning!!</h1>
+                <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+                <div class="iew-container">
+                    <ul class="iew-download">
+                        <li>
+                            <a href="http://www.google.com/chrome/">
+                                <img src="img/browsers/chrome.png" alt="">
+                                <div>Chrome</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                                <img src="img/browsers/firefox.png" alt="">
+                                <div>Firefox</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.opera.com">
+                                <img src="img/browsers/opera.png" alt="">
+                                <div>Opera</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.apple.com/safari/">
+                                <img src="img/browsers/safari.png" alt="">
+                                <div>Safari</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                                <img src="img/browsers/ie.png" alt="">
+                                <div>IE (New)</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <p>Sorry for the inconvenience!</p>
+            </div>   
+        <![endif]-->
+    
+        <!-- Javascript Libraries -->
+        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        <script src="vendors/bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+        <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="vendors/bower_components/autosize/dist/autosize.min.js"></script>
+        
+        <!-- Placeholder for IE9 -->
+        <!--[if IE 9 ]>
+            <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+        
+        <script src="js/functions.js"></script>
+    </body>
+</html>
