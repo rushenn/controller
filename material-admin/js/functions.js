@@ -398,7 +398,7 @@ $(document).ready(function(){
      */
     if ($('.login-content')[0]) {
         //Add class to HTML. This is used to center align the logn box
-        $('html').addClass('login-content');
+        $('body').addClass('content');
         
         $('body').on('click', '.login-navigation > li', function(){
             var z = $(this).data('block');

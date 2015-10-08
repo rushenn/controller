@@ -20,10 +20,12 @@ html, body {
 
 body {
     font-weight: 400;
-    padding-top: @header-height;
-    padding-bottom: @footer-height;
-    .animated(fadeIn, 1000ms);
     position: relative;
+    
+    &:not(.login) {
+        padding-top: @header-height;
+        padding-bottom: @footer-height;
+    }
 }
 
 audio, video {  
