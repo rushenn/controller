@@ -43,17 +43,17 @@ class JSONrpc extends SuperAgent {
       method: this.namespace ? this.namespace + '.' + method : method
     }
     return SuperAgent.post(this.endpoint)
-                     .set('Content-Type', 'application/json')
-                     .send(JSON.stringify(dataObj))
-                     .then(function(res) {
-                       if (!res.text)
-                         throw new Error("res.text not set in the response")
-                         return JSON.parse(res.text).result
-                     }, function(error) {
-                       if (error.res && error.res.text)
-                         throw JSON.parse(error.res.text).error
-                       throw error
-                     })
+      .set('Content-Type', 'application/json')
+      .send(JSON.stringify(dataObj))
+      .then(function(res) {
+        if (!res.text)
+          throw new Error("res.text not set in the response")
+        return JSON.parse(res.text).result
+      }, function(error) {
+        if (error.res && error.res.text)
+          throw JSON.parse(error.res.text).error
+        throw error
+      })
   }
 }
 
