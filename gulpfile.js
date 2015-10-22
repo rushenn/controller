@@ -21,6 +21,8 @@ var babelify = require('babelify');
 var server = require('gulp-webserver');
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
+var less = require('gulp-less');
+var path = require('path');
 
 var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
@@ -28,6 +30,14 @@ var paths = {
   html: ['app/*.html'],
   gulpfile: ['gulpfile.js']
 }
+
+gulp.task('less', function () {
+  return gulp.src('app/less/app.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('app/css'));
+});
 
 gulp.task('clean', function() {
     return del(['dist']);
