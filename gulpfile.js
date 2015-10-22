@@ -21,7 +21,6 @@ var babelify = require('babelify');
 var server = require('gulp-webserver');
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
-var minifyCss = require('gulp-minify-css');
 var less = require('gulp-less');
 var path = require('path');
 
@@ -34,8 +33,9 @@ var paths = {
 
 gulp.task('less', function () {
   return gulp.src('app/less/app.less')
-    .pipe(less())
-    .pipe(minifyCss())
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
     .pipe(gulp.dest('app/css'));
 });
 
