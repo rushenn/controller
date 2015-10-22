@@ -15,12 +15,13 @@
  */
 
 var gulp = require('gulp');
-var del = require('del');
+var del = require('del'); 
 var browserify = require('browserify');
 var babelify = require('babelify');
 var server = require('gulp-webserver');
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
+var minifyCSS = require('gulp-minify-css');
 var less = require('gulp-less');
 var path = require('path');
 
@@ -33,9 +34,8 @@ var paths = {
 
 gulp.task('less', function () {
   return gulp.src('app/less/app.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
+    .pipe(less())
+    .pipe(minifyCSS())
     .pipe(gulp.dest('app/css'));
 });
 
