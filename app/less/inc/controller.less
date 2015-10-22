@@ -1,0 +1,99 @@
+.content {
+    padding: 20px;
+}
+
+.home-appear {
+    opacity: 0.01;
+    transition: opacity .3s ease-in;
+}
+
+.home-appear.home-appear-active {
+    opacity: 1;
+}
+
+.servers-appear {
+    opacity: 0.01;
+    transition: opacity .3s ease-in;
+}
+
+.servers-appear.servers-appear-active { 
+    opacity: 1; 
+}
+
+.servers-leave {
+    opacity: 1;
+}
+
+.servers-leave.servers-leave-active {
+    opacity: 0.01;
+    transition: opacity .3s ease-in;
+}
+
+.visitors .sparkline {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.graph {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.card {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
+}
+
+.card:hover {
+    cursor: move;
+    -webkit-transition: 1s;
+            transition: 1s;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+    background-color: #ff5252;
+    color: white; 
+}
+
+.index-card {
+    color: #555;
+}
+
+.index-card, .index-card .card {
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+    height: 180px;
+    position: inherit;
+    touch-action: none;
+    border-radius: 2px;
+    transform: scaleX(1);
+    transform-origin: right 50% 0px;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 2px 3px 2px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 2px 3px 2px 0px rgba(0,0,0,0.1);
+    box-shadow: 2px 3px 2px 0px rgba(0,0,0,0.1);
+}
+
+.header {
+    margin-top: 15px;
+    color: #555;
+}
+
+.header h2 {
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.index-card h6 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 50px;
+    text-align: center;
+}
