@@ -27,9 +27,10 @@ var path = require('path');
 
 var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
-  css: ['app/*.css'],
+  css: ['app/css/*.css'],
+  font: ['app/fonts/**/*'],
   html: ['app/*.html'],
-  gulpfile: ['gulpfile.js']
+  gulpfile: ['gulpfile.js'] 
 }
 
 gulp.task('less', function () {
@@ -53,6 +54,11 @@ gulp.task('main', function() {
 gulp.task('css', function() {
     return gulp.src(paths.css)
         .pipe(gulp.dest('dist'))
+});
+
+gulp.task('font', function() {
+    return gulp.src(paths.font)
+        .pipe(gulp.dest('dist/fonts'))
 });
 
 gulp.task('html', function() {
@@ -94,6 +100,6 @@ gulp.task('serve', ['build', 'watch'], function() {
     }));
 });
 
-gulp.task('build', ['main', 'css', 'html', 'lint']);
+gulp.task('build', ['main', 'css', 'font', 'html', 'lint']);
 
 gulp.task('default', ['build']);
