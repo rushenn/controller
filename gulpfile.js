@@ -15,19 +15,30 @@
  */
 
 var gulp = require('gulp');
-var del = require('del');
+var del = require('del'); 
 var browserify = require('browserify');
 var babelify = require('babelify');
 var server = require('gulp-webserver');
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
+var minifyCSS = require('gulp-minify-css');
+var less = require('gulp-less');
+var path = require('path');
 
 var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
-  css: ['app/*.css'],
+  css: ['app/css/*.css'],
+  font: ['app/fonts/**/*'],
   html: ['app/*.html'],
-  gulpfile: ['gulpfile.js']
+  gulpfile: ['gulpfile.js'] 
 }
+
+gulp.task('less', function () {
+  return gulp.src('app/less/app.less')
+    .pipe(less())
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('app/css'));
+});
 
 gulp.task('clean', function() {
     return del(['dist']);
@@ -43,6 +54,11 @@ gulp.task('main', function() {
 gulp.task('css', function() {
     return gulp.src(paths.css)
         .pipe(gulp.dest('dist'))
+});
+
+gulp.task('font', function() {
+    return gulp.src(paths.font)
+        .pipe(gulp.dest('dist/fonts'))
 });
 
 gulp.task('html', function() {
@@ -84,6 +100,6 @@ gulp.task('serve', ['build', 'watch'], function() {
     }));
 });
 
-gulp.task('build', ['main', 'css', 'html', 'lint']);
+gulp.task('build', ['main', 'css', 'font', 'html', 'lint']);
 
 gulp.task('default', ['build']);
