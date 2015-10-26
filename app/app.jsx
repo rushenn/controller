@@ -23,6 +23,7 @@ import Router, { Route, DefaultRoute } from 'react-router';
 
 injectTapEventPlugin();
 
+import Login from './modules/login';
 import Home from './modules/home';
 import Auth from './modules/auth';
 import Version from './modules/version';
@@ -119,7 +120,7 @@ App.contextTypes = {
 
 const AppRoutes = (
   <Route path='/' handler={App}>
-    <DefaultRoute handler={Home} />
+    <DefaultRoute handler={Login} />
     <Route path='/servers' handler={Servers} />
     <Route path='/version' handler={Version} />
     <Route path='/info' handler={ClusterInfo} />
