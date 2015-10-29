@@ -15,6 +15,7 @@
  */
 
 var gulp = require('gulp');
+var util = require('gulp-util');
 var del = require('del'); 
 var browserify = require('browserify');
 var babelify = require('babelify');
@@ -31,10 +32,12 @@ var paths = {
   gulpfile: ['gulpfile.js'] 
 }
 
+var production = !!util.env.production
+
 gulp.task('less', function () {
   return gulp.src('app/less/app.less')
     .pipe(less())
-    .pipe(minifyCSS())
+    .pipe(production ? minifyCSS() : util.noop())
     .pipe(gulp.dest('dist'));
 });
 
