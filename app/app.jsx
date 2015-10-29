@@ -40,10 +40,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className='header' style={{position: 'absolute', left: 60}}>
+        <div className='header'>
           <h2> Minio Controller </h2>
         </div>
-        <div style={{paddingTop: 64 + 'px', position: 'inherit'}}>
+        <div style={{paddingTop: 64 + 'px'}}>
           <RouteHandler />
         </div>
       </div>
