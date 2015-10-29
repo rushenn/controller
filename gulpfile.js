@@ -23,11 +23,9 @@ var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
 var minifyCSS = require('gulp-minify-css');
 var less = require('gulp-less');
-var path = require('path');
 
 var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
-  css: ['app/css/*.css'],
   font: ['app/fonts/**/*'],
   html: ['app/*.html'],
   gulpfile: ['gulpfile.js'] 
@@ -37,7 +35,7 @@ gulp.task('less', function () {
   return gulp.src('app/less/app.less')
     .pipe(less())
     .pipe(minifyCSS())
-    .pipe(gulp.dest('app/css'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', function() {
@@ -49,11 +47,6 @@ gulp.task('main', function() {
             .bundle()
             .pipe(source('main.js'))
             .pipe(gulp.dest('dist'))
-});
-
-gulp.task('css', function() {
-    return gulp.src(paths.css)
-        .pipe(gulp.dest('dist'))
 });
 
 gulp.task('font', function() {
@@ -100,6 +93,6 @@ gulp.task('serve', ['build', 'watch'], function() {
     }));
 });
 
-gulp.task('build', ['main', 'css', 'font', 'html', 'lint']);
+gulp.task('build', ['main', 'less', 'font', 'html', 'lint']);
 
 gulp.task('default', ['build']);
