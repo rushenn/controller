@@ -29,7 +29,8 @@ var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
   font: ['app/fonts/**/*'],
   html: ['app/*.html'],
-  gulpfile: ['gulpfile.js'] 
+  gulpfile: ['gulpfile.js'],
+  less: ['app/less/**/*.less']
 }
 
 var production = !!util.env.production
@@ -82,6 +83,7 @@ gulp.task('lint', function () {
 gulp.task('watch', function() {
     gulp.watch(paths.main, ['main']);
     gulp.watch(paths.html, ['html']);
+    gulp.watch(paths.less, ['less']);
 });
 
 gulp.task('serve', ['build', 'watch'], function() {

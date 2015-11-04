@@ -23,6 +23,7 @@ import Router, { Route, DefaultRoute } from 'react-router';
 injectTapEventPlugin();
 
 import Login from './modules/login';
+import Home from './modules/home';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,14 +40,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className='header'>
-          <h2> Minio Controller </h2>
-        </div>
-        <div style={{paddingTop: 64 + 'px'}}>
-          <RouteHandler />
-        </div>
-      </div>
+      <RouteHandler />
     );
   }
 }
@@ -58,6 +52,7 @@ App.contextTypes = {
 const AppRoutes = (
   <Route path='/' handler={App}>
     <DefaultRoute handler={Login} />
+    <Route path='/home' handler={Home} />
   </Route>
 );
 
