@@ -28,17 +28,17 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className='login-content'>
-        <div className='lc-block'>
+      <div className="login-content">
+        <div className="lc-block">
           <i className="lc-icon zmdi zmdi-account"></i>
 
           <h2 className="f-300 m-b-25">Hi Admin!</h2>
 
-          <div className='fg-line'>
-            <input type='password' className='form-control text-center' placeholder='Password' />
+          <div className="fg-line">
+            <input type="password" className="form-control text-center" placeholder="Password" />
           </div>
 
-          <button onClick={this.validateLogin} className="btn btn-login btn-danger btn-float"><i className='zmdi zmdi-arrow-forward'></i></button>
+          <button onClick={this.validateLogin} className="btn btn-login btn-danger btn-float"><i className="zmdi zmdi-arrow-forward"></i></button>
         </div>
       </div>
     )
