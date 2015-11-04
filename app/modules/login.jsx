@@ -17,37 +17,31 @@
 import React from 'react';
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.validateLogin = this.validateLogin.bind(this);
+  }
+
+  validateLogin() {
+    this.context.router.transitionTo('/home');
+  }
+
   render() {
     return (
+      <div className='login-content'>
+        <div className='lc-block'>
+          <i className="lc-icon zmdi zmdi-account"></i>
 
-        <div className='lc-block toggled'>
-            <div className='input-group m-b-20'>
-                <span className='input-group-addon'><i className='zmdi zmdi-account'></i></span>
-                <div className='fg-line'>
-                    <input type='text' className='form-control' placeholder='Username' />
-                </div>
-            </div>
-            
-            <div className='input-group m-b-20'>
-                <span className='input-group-addon'><i className='zmdi zmdi-male'></i></span>
-                <div className='fg-line'>
-                    <input type='password' className='form-control' placeholder='Password' />
-                </div>
-            </div>
-            
-            <div className='clearfix'></div>
-            
-            <div className='checkbox'>
-                <label>
-                    <input type='checkbox' value='' />
-                    <i className='input-helper'></i>
-                </label>
-            </div>
-            
-            <a href='' className='btn btn-login btn-danger btn-float'><i className='zmdi zmdi-arrow-forward'></i></a>
-            
+          <h2 className="f-300 m-b-25">Hi Admin!</h2>
+
+          <div className='fg-line'>
+            <input type='password' className='form-control text-center' placeholder='Password' />
+          </div>
+
+          <button onClick={this.validateLogin} className="btn btn-login btn-danger btn-float"><i className='zmdi zmdi-arrow-forward'></i></button>
         </div>
-
+      </div>
     )
   }
 }

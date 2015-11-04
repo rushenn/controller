@@ -10,14 +10,14 @@
     .caret {
         margin-top: -3px;
     }
-     
+
     &:not(.btn-link) {
         &:active,
         &.active,
         &:hover {
-            
+
         }
-        
+
         .z-depth(1);
     }
 }
@@ -33,7 +33,7 @@
     .btn-group {
         box-shadow: none !important;
     }
-    
+
     .btn {
         margin: 0;
     }
@@ -69,12 +69,12 @@
     height: 40px;
     padding: 0;
     text-align: center;
-    
+
     .zmdi {
         font-size: 17px;
     }
-    
-    
+
+
     &.btn-default {
         &:hover {
             background: #fff;
@@ -93,33 +93,19 @@
     }
 }
 
-.btn-float { 
-    width: 50px;
-    height: 50px;
+.btn-float {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    line-height: 45px !important;
-    
+    line-height: 58px;
+
     &:not(.m-btn) {
         position: absolute !important;
     }
 
     i {
-        font-size: 23px;
-        .transition(all);
-        .transition-duration(500ms);
-    }
-
-    &:not(.bgm-white):not(.bgm-gray) {
-        & > i {
-            color: #fff;
-        }
-    }
-    
-    &.bgm-white,
-    &.bgm-gray {
-        & > i {
-            color: #333;
-        }
+        font-size: 25px;
+        color: #fff;
     }
 }
 
@@ -127,23 +113,9 @@
 .open .btn {
     outline: none !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-    
+
     &:focus, &:active {
         outline: none !important;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
     }
-}
-
-/*
- * Material Design Add button
- */
-.m-btn {
-    z-index: 1;
-    bottom: 40px;
-    right: 40px;
-    position: fixed !important;
-}
-
-.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
-    margin-left: 0;
 }
