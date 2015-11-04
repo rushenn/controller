@@ -15,7 +15,8 @@
  */
 
 var gulp = require('gulp');
-var del = require('del'); 
+var util = require('gulp-util');
+var del = require('del');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var server = require('gulp-webserver');
@@ -23,21 +24,22 @@ var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
 var minifyCSS = require('gulp-minify-css');
 var less = require('gulp-less');
-var path = require('path');
 
 var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
-  css: ['app/css/*.css'],
   font: ['app/fonts/**/*'],
   html: ['app/*.html'],
-  gulpfile: ['gulpfile.js'] 
+  gulpfile: ['gulpfile.js'],
+  less: ['app/less/**/*.less']
 }
+
+var production = !!util.env.production
 
 gulp.task('less', function () {
   return gulp.src('app/less/app.less')
     .pipe(less())
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('app/css'));
+    .pipe(production ? minifyCSS() : util.noop())
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', function() {
@@ -49,11 +51,6 @@ gulp.task('main', function() {
             .bundle()
             .pipe(source('main.js'))
             .pipe(gulp.dest('dist'))
-});
-
-gulp.task('css', function() {
-    return gulp.src(paths.css)
-        .pipe(gulp.dest('dist'))
 });
 
 gulp.task('font', function() {
@@ -86,6 +83,7 @@ gulp.task('lint', function () {
 gulp.task('watch', function() {
     gulp.watch(paths.main, ['main']);
     gulp.watch(paths.html, ['html']);
+    gulp.watch(paths.less, ['less']);
 });
 
 gulp.task('serve', ['build', 'watch'], function() {
@@ -100,6 +98,6 @@ gulp.task('serve', ['build', 'watch'], function() {
     }));
 });
 
-gulp.task('build', ['main', 'css', 'font', 'html', 'lint']);
+gulp.task('build', ['main', 'less', 'font', 'html', 'lint']);
 
 gulp.task('default', ['build']);
