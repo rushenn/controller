@@ -24,6 +24,8 @@ var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
 var minifyCSS = require('gulp-minify-css');
 var less = require('gulp-less');
+var mainBowerFiles = require('gulp-main-bower-files');
+var flatten = require('gulp-flatten');
 
 var paths = {
   main: ['app/*.js', 'app/modules/*.jsx', 'app/lib/*.js'],
@@ -34,6 +36,13 @@ var paths = {
 }
 
 var production = !!util.env.production
+
+gulp.task('bower', function() {
+    return gulp.src('./bower.json')
+        .pipe(mainBowerFiles())
+        .pipe(flatten({ includeParents: 1} ))
+        .pipe(gulp.dest('dist/lib'));
+});
 
 gulp.task('less', function () {
   return gulp.src('app/less/app.less')
@@ -98,6 +107,6 @@ gulp.task('serve', ['build', 'watch'], function() {
     }));
 });
 
-gulp.task('build', ['main', 'less', 'font', 'html', 'lint']);
+gulp.task('build', ['main', 'less', 'font', 'html', 'lint', 'bower']);
 
 gulp.task('default', ['build']);
